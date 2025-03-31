@@ -27,20 +27,20 @@
       --ring: #E5E7EB;
       --blue: #004B87; /* Blue for accents */
     }
-    
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    
+
     body {
       font-family: 'Inter', sans-serif;
       color: var(--foreground);
       background-color: #F9FAFB;
       line-height: 1.5;
     }
-    
+
     /* Container styles */
     .container {
       width: 100%;
@@ -48,7 +48,7 @@
       margin: 0 auto;
       padding: 1.5rem 1rem;
     }
-    
+
     /* Typography */
     h1 {
       font-size: 1.5rem;
@@ -56,29 +56,29 @@
       margin-bottom: 1.5rem;
       color: var(--primary);
     }
-    
+
     h2 {
       font-size: 1.25rem;
       font-weight: 600;
       margin-bottom: 1rem;
     }
-    
+
     h3 {
       font-size: 1.125rem;
       font-weight: 500;
       margin-bottom: 0.75rem;
     }
-    
+
     h4 {
       font-size: 1rem;
       font-weight: 500;
       margin-bottom: 0.5rem;
     }
-    
+
     p {
       margin-bottom: 1rem;
     }
-    
+
     /* Card styles */
     .card {
       background-color: var(--card);
@@ -88,28 +88,28 @@
       overflow: hidden;
       margin-bottom: 1.5rem;
     }
-    
+
     .card-header {
       padding: 1.25rem 1.5rem;
       border-bottom: 1px solid var(--border);
     }
-    
+
     .card-title {
       font-size: 1.25rem;
       font-weight: 600;
       color: var(--card-foreground);
     }
-    
+
     .card-description {
       font-size: 0.875rem;
       color: var(--muted-foreground);
       margin-top: 0.25rem;
     }
-    
+
     .card-content {
       padding: 1.5rem;
     }
-    
+
     .card-footer {
       padding: 1.25rem 1.5rem;
       border-top: 1px solid var(--border);
@@ -117,7 +117,7 @@
       justify-content: flex-end;
       gap: 0.75rem;
     }
-    
+
     /* Button styles */
     .button {
       display: inline-flex;
@@ -131,54 +131,54 @@
       cursor: pointer;
       border: 1px solid transparent;
     }
-    
+
     .button-primary {
       background-color: var(--primary);
       color: #FFFFFF;
     }
-    
+
     .button-primary:hover {
       background-color: var(--primary-hover);
     }
-    
+
     .button-secondary {
       background-color: var(--secondary);
       color: #FFFFFF;
     }
-    
+
     .button-secondary:hover {
       background-color: var(--secondary-hover);
     }
-    
+
     .button-outline {
       background-color: transparent;
       border-color: var(--border);
       color: var(--foreground);
     }
-    
+
     .button-outline:hover {
       border-color: var(--accent);
       background-color: var(--muted);
     }
-    
+
     /* Form styles */
     .form-group {
       margin-bottom: 1.5rem;
     }
-    
+
     .form-label {
       display: block;
       font-size: 0.875rem;
       font-weight: 500;
       margin-bottom: 0.5rem;
     }
-    
+
     .form-helper {
       font-size: 0.75rem;
       color: var(--muted-foreground);
       margin-top: 0.25rem;
     }
-    
+
     .form-control {
       width: 100%;
       padding: 0.5rem;
@@ -189,20 +189,20 @@
       color: var(--foreground);
       transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
-    
+
     .form-control:focus {
       outline: none;
       box-shadow: 0 0 0 2px rgba(0, 75, 135, 0.2);
       border-color: var(--primary);
     }
-    
+
     /* Radio and select styles */
     .radio-group {
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
     }
-    
+
     .radio-item {
       display: flex;
       align-items: center;
@@ -210,7 +210,7 @@
       padding-left: 1.75rem;
       cursor: pointer;
     }
-    
+
     .radio-item input {
       position: absolute;
       opacity: 0;
@@ -218,7 +218,7 @@
       height: 0;
       width: 0;
     }
-    
+
     .radio-checkmark {
       position: absolute;
       top: 0.25rem;
@@ -229,26 +229,26 @@
       border-radius: 50%;
       border: 1px solid var(--border);
     }
-    
+
     .radio-item:hover input ~ .radio-checkmark {
       background-color: var(--muted);
     }
-    
+
     .radio-item input:checked ~ .radio-checkmark {
       background-color: var(--primary);
       border-color: var(--primary);
     }
-    
+
     .radio-checkmark:after {
       content: "";
       position: absolute;
       display: none;
     }
-    
+
     .radio-item input:checked ~ .radio-checkmark:after {
       display: block;
     }
-    
+
     .radio-item .radio-checkmark:after {
       top: 0.25rem;
       left: 0.25rem;
@@ -257,7 +257,7 @@
       border-radius: 50%;
       background: white;
     }
-    
+
     /* Result area */
     .result-section {
       background-color: #f8f9fa;
@@ -265,7 +265,7 @@
       padding: 1.5rem;
       margin-bottom: 1.5rem;
     }
-    
+
     .badge {
       display: inline-flex;
       align-items: center;
@@ -278,7 +278,7 @@
       color: #1E40AF;
       border: 1px solid #DBEAFE;
     }
-    
+
     /* Icons */
     .icon {
       width: 1rem;
@@ -286,32 +286,32 @@
       display: inline-block;
       vertical-align: middle;
     }
-    
+
     .icon-arrow-right {
       background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>');
       background-size: contain;
       background-repeat: no-repeat;
     }
-    
+
     .icon-alert-circle {
       background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>');
       background-size: contain;
       background-repeat: no-repeat;
     }
-    
+
     .icon-check-circle {
       background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>');
       background-size: contain;
       background-repeat: no-repeat;
     }
-    
+
     /* Separator */
     .separator {
       height: 1px;
       background-color: var(--border);
       margin: 1.5rem 0;
     }
-    
+
     /* Alert */
     .alert {
       display: flex;
@@ -323,38 +323,38 @@
       gap: 0.75rem;
       background-color: #F9FAFB;
     }
-    
+
     .alert-icon {
       flex-shrink: 0;
       width: 1rem;
       height: 1rem;
       margin-top: 0.125rem;
     }
-    
+
     .alert-title {
       font-weight: 500;
       font-size: 0.875rem;
       margin-bottom: 0.25rem;
     }
-    
+
     .alert-description {
       font-size: 0.75rem;
       color: var(--muted-foreground);
     }
-    
+
     /* Progress indicator */
     .step-indicator {
       display: flex;
       margin-bottom: 2rem;
     }
-    
+
     .step {
       flex: 1;
       text-align: center;
       padding: 0.5rem;
       position: relative;
     }
-    
+
     .step:not(:last-child)::after {
       content: '';
       position: absolute;
@@ -365,7 +365,7 @@
       background-color: var(--border);
       z-index: 0;
     }
-    
+
     .step-number {
       display: inline-flex;
       align-items: center;
@@ -381,71 +381,71 @@
       z-index: 1;
       margin-bottom: 0.5rem;
     }
-    
+
     .step.active .step-number {
       background-color: var(--primary);
       border-color: var(--primary);
       color: white;
     }
-    
+
     .step-title {
       font-size: 0.75rem;
       font-weight: 500;
     }
-    
+
     /* Utility classes */
     .mb-4 {
       margin-bottom: 1rem;
     }
-    
+
     .mt-2 {
       margin-top: 0.5rem;
     }
-    
+
     .mb-3 {
       margin-bottom: 0.75rem;
     }
-    
+
     .mr-2 {
       margin-right: 0.5rem;
     }
-    
+
     .space-y-1 > * + * {
       margin-top: 0.25rem;
     }
-    
+
     .flex {
       display: flex;
     }
-    
+
     .items-center {
       align-items: center;
     }
-    
+
     .text-sm {
       font-size: 0.875rem;
     }
-    
+
     .text-lg {
       font-size: 1.125rem;
     }
-    
+
     .font-medium {
       font-weight: 500;
     }
-    
+
     .grid {
       display: grid;
     }
-    
+
     .grid-cols-1 {
       grid-template-columns: repeat(1, minmax(0, 1fr));
     }
-    
+
     .gap-4 {
       gap: 1rem;
     }
-    
+
     @media (min-width: 1024px) {
       .lg\:grid-cols-2 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -456,7 +456,7 @@
 <body>
   <div class="container">
     <h1>Procurement Method Selection Guide</h1>
-    
+
     <div class="step-indicator">
       <div class="step active" id="stepIndicator1">
         <div class="step-number">1</div>
@@ -475,7 +475,7 @@
         <div class="step-title">Result</div>
       </div>
     </div>
-    
+
     <!-- Step 1: Introduction -->
     <div id="step1" class="card">
       <div class="card-header">
@@ -488,7 +488,7 @@
         <p>
           Finding the right procurement method is crucial for ensuring compliance with regulations and obtaining the best value. This tool will guide you through the selection process based on your purchase details.
         </p>
-        
+
         <div class="alert">
           <span class="alert-icon icon-alert-circle"></span>
           <div>
@@ -503,7 +503,7 @@
         <button class="button button-primary" onclick="showStep('step2')">Get Started <span class="icon icon-arrow-right" style="margin-left: 0.25rem;"></span></button>
       </div>
     </div>
-    
+
     <!-- Step 2: Existing Contract Check -->
     <div id="step2" class="card" style="display: none;">
       <div class="card-header">
@@ -514,7 +514,7 @@
       </div>
       <div class="card-content">
         <p>Before starting a new procurement process, check if there are existing contracts available that meet your requirements.</p>
-        
+
         <div class="alert">
           <span class="alert-icon icon-alert-circle"></span>
           <div>
@@ -525,6 +525,17 @@
           </div>
         </div>
         
+        <div class="mb-4">
+          <h4 class="font-medium mb-2">Where to Check for Existing Contracts</h4>
+          <ul class="text-sm mb-4">
+            <li><a href="https://vascupp.org" target="_blank" style="color: var(--blue); text-decoration: underline;">VASCUPP - Virginia Association of State College and University Purchasing Professionals</a></li>
+            <li><a href="https://vhepc.org" target="_blank" style="color: var(--blue); text-decoration: underline;">VHEPC - Virginia Higher Education Procurement Consortium</a></li>
+            <li><a href="https://eva.virginia.gov/pages/eva-eprocurement-system.htm" target="_blank" style="color: var(--blue); text-decoration: underline;">eVA - Virginia's eProcurement Portal</a></li>
+            <li><a href="https://www.withpavilion.com" target="_blank" style="color: var(--blue); text-decoration: underline;">Pavilion</a></li>
+            
+          </ul>
+        </div>
+
         <h3 class="mb-3">Do you have an existing contract available?</h3>
         <div class="radio-group mb-4">
           <label class="radio-item">
@@ -544,7 +555,7 @@
         <button class="button button-primary" onclick="showStep('step3')">Continue</button>
       </div>
     </div>
-    
+
     <!-- Step 3: Procurement Details -->
     <div id="step3" class="card" style="display: none;">
       <div class="card-header">
@@ -560,7 +571,7 @@
             <input id="estimatedValue" class="form-control" type="text" placeholder="e.g. 50000" />
             <div class="form-helper">Enter the estimated dollar value of the purchase (numbers only).</div>
           </div>
-          
+
           <div class="form-group">
             <label class="form-label">Purchase Type</label>
             <select id="purchaseType" class="form-control">
@@ -620,7 +631,7 @@
             </select>
             <div class="form-helper">Select the category that best describes what you're purchasing.</div>
           </div>
-          
+
           <div class="form-group">
             <label class="form-label">Complexity Level</label>
             <div class="radio-group">
@@ -641,7 +652,7 @@
               </label>
             </div>
           </div>
-          
+
           <div class="form-group">
             <label class="form-label">Timeline</label>
             <div class="radio-group">
@@ -669,7 +680,7 @@
         <button class="button button-primary" onclick="getRecommendation()">Get Recommendation</button>
       </div>
     </div>
-    
+
     <!-- Step 4: Recommendation Result -->
     <div id="step4" class="card" style="display: none;">
       <div class="card-header">
@@ -681,7 +692,7 @@
       <div class="card-content">
         <div id="resultCard" class="result-section">
           <h3 id="resultTitle" class="text-lg font-medium mb-3">Loading recommendation...</h3>
-          
+
           <div class="mb-4">
             <div class="space-y-1">
               <div class="flex items-center">
@@ -702,42 +713,55 @@
               </div>
             </div>
           </div>
-          
+
           <div class="separator"></div>
-          
+
           <div class="mb-4">
             <h4 class="font-medium mb-2">Method Description</h4>
             <p id="resultDescription" class="text-sm"></p>
           </div>
-          
+
           <div class="mb-4">
             <h4 class="font-medium mb-2">Suitable For</h4>
             <p id="resultSuitableFor" class="text-sm"></p>
           </div>
-          
+
           <div class="mb-4">
             <h4 class="font-medium mb-2">Typical Timeframe</h4>
             <p id="resultTimeframe" class="text-sm"></p>
           </div>
-          
+
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
             <div>
               <h4 class="font-medium mb-2">Advantages</h4>
               <ul id="resultAdvantages" class="text-sm"></ul>
             </div>
-            
+
             <div>
               <h4 class="font-medium mb-2">Disadvantages</h4>
               <ul id="resultDisadvantages" class="text-sm"></ul>
             </div>
           </div>
-          
+
           <div class="alert">
             <span class="alert-icon icon-alert-circle"></span>
             <div class="alert-title">Next Steps</div>
             <div class="alert-description">
               Contact your procurement services department to initiate this process. Be sure to have your specifications and requirements documented.
             </div>
+          </div>
+
+          <div class="separator"></div>
+          
+          <div class="mb-4">
+            <h4 class="font-medium mb-2">Helpful Resources</h4>
+            <ul class="text-sm">
+              <li><a href="https://vascupp.org" target="_blank" style="color: var(--blue); text-decoration: underline;">VASCUPP - Virginia Association of State College and University Purchasing Professionals</a></li>
+              <li><a href="https://vhepc.org" target="_blank" style="color: var(--blue); text-decoration: underline;">VHEPC - Virginia Higher Education Procurement Consortium</a></li>
+              <li><a href="https://eva.virginia.gov/pages/eva-eprocurement-system.htm" target="_blank" style="color: var(--blue); text-decoration: underline;">eVA - Virginia's eProcurement Portal</a></li>
+              <li><a href="https://www.withpavilion.com" target="_blank" style="color: var(--blue); text-decoration: underline;">Pavilion</a></li>
+              
+            </ul>
           </div>
         </div>
       </div>
@@ -748,7 +772,7 @@
         </button>
       </div>
     </div>
-    
+
     <!-- Contract Found Success Message -->
     <div id="contractFound" class="card" style="display: none;">
       <div class="card-header">
@@ -765,7 +789,7 @@
             Since you've found an existing contract that meets your needs, you can proceed with using that contract without needing a new solicitation process.
           </div>
         </div>
-        
+
         <div class="mt-2 mb-4">
           <h3 class="text-lg font-medium mb-3">Next Steps:</h3>
           <ol class="space-y-1">
@@ -775,10 +799,23 @@
             <li>Document your use of the existing contract in your procurement file</li>
           </ol>
         </div>
-        
+
         <button class="button button-primary" onclick="window.print()">
           Print This Information
         </button>
+
+        <div class="separator"></div>
+          
+        <div class="mb-4">
+          <h4 class="font-medium mb-2">Helpful Resources</h4>
+          <ul class="text-sm">
+            <li><a href="https://vascupp.org" target="_blank" style="color: var(--blue); text-decoration: underline;">VASCUPP - Virginia Association of State College and University Purchasing Professionals</a></li>
+            <li><a href="https://vhepc.org" target="_blank" style="color: var(--blue); text-decoration: underline;">VHEPC - Virginia Higher Education Procurement Consortium</a></li>
+            <li><a href="https://eva.virginia.gov/pages/eva-eprocurement-system.htm" target="_blank" style="color: var(--blue); text-decoration: underline;">eVA - Virginia's eProcurement Portal</a></li>
+            <li><a href="https://www.withpavilion.com" target="_blank" style="color: var(--blue); text-decoration: underline;">Pavilion</a></li>
+            
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -792,16 +829,16 @@
       document.getElementById('step3').style.display = 'none';
       document.getElementById('step4').style.display = 'none';
       document.getElementById('contractFound').style.display = 'none';
-      
+
       // Show the requested step
       document.getElementById(stepId).style.display = 'block';
-      
+
       // Update step indicators
       document.getElementById('stepIndicator1').classList.remove('active');
       document.getElementById('stepIndicator2').classList.remove('active');
       document.getElementById('stepIndicator3').classList.remove('active');
       document.getElementById('stepIndicator4').classList.remove('active');
-      
+
       if (stepId === 'step1') {
         document.getElementById('stepIndicator1').classList.add('active');
       } else if (stepId === 'step2') {
@@ -812,11 +849,11 @@
         document.getElementById('stepIndicator4').classList.add('active');
       }
     }
-    
+
     function showContractFound() {
       showStep('contractFound');
     }
-    
+
     function existingContractSelected(yesSelected) {
       if (yesSelected) {
         // If user selects "Yes" for existing contract, update the purchase type dropdown
@@ -826,7 +863,7 @@
         document.getElementById('purchaseType').value = 'goods';
       }
     }
-    
+
     // Format currency
     function formatCurrency(value) {
       return new Intl.NumberFormat('en-US', { 
@@ -835,7 +872,7 @@
         maximumFractionDigits: 0
       }).format(parseFloat(value) || 0);
     }
-    
+
     // Get procurement recommendation based on form inputs
     function getRecommendation() {
       // Get form values
@@ -843,29 +880,29 @@
       const purchaseType = document.getElementById('purchaseType').value;
       const complexity = document.querySelector('input[name="complexity"]:checked').value;
       const timeline = document.querySelector('input[name="timeline"]:checked').value;
-      
+
       // Validate inputs
       if (!estimatedValue) {
         alert('Please enter an estimated value.');
         return;
       }
-      
+
       // Special handling for existing contract
       if (purchaseType === 'existing_contract') {
         showContractFound();
         return;
       }
-      
+
       // Set form result data
       document.getElementById('resultValue').textContent = formatCurrency(estimatedValue);
       document.getElementById('resultType').textContent = getPurchaseTypeLabel(purchaseType);
       document.getElementById('resultComplexity').textContent = capitalizeFirstLetter(complexity);
       document.getElementById('resultTimeline').textContent = capitalizeFirstLetter(timeline);
-      
+
       // Determine recommendation based on inputs
       let recommendedMethod;
       const valueNum = parseFloat(estimatedValue);
-      
+
       if (valueNum <= 10000) {
         recommendedMethod = {
           name: "Delegated Authority",
@@ -957,7 +994,7 @@
           };
         }
       }
-      
+
       // Handle special cases - emergency needs
       if (timeline === 'urgent' && complexity !== 'high') {
         if (purchaseType === 'emergency' || purchaseType === 'disaster_response' || purchaseType === 'critical_need') {
@@ -979,7 +1016,7 @@
           };
         }
       }
-      
+
       // Special case for sole source
       if (purchaseType === 'proprietary' || purchaseType === 'unique_source' || purchaseType === 'compatible_with_existing') {
         recommendedMethod = {
@@ -999,7 +1036,7 @@
           ]
         };
       }
-      
+
       // Special case for recurring needs
       if (purchaseType === 'recurring_needs') {
         if (valueNum > 200000) {
@@ -1038,7 +1075,7 @@
           };
         }
       }
-      
+
       // Exceptions to Competition categories
       const exceptionsToCompetition = [
         'arts_media_speakers', 'arts_media_limited', 'educational_institutions', 
@@ -1052,11 +1089,11 @@
         'grant_subawards', 'royalties', 'pass_through', 
         'sponsorships', 'honoraria', 'facilitators_mediators'
       ];
-      
+
       if (exceptionsToCompetition.includes(purchaseType)) {
         const purchaseLabel = getPurchaseTypeLabel(purchaseType);
         const hasLimit = purchaseLabel.includes('Up to $200K');
-        
+
         recommendedMethod = {
           name: "Exception to Competition",
           description: `This purchase falls under the "${purchaseLabel}" exception category, which is exempt from standard competition requirements.`,
@@ -1074,36 +1111,36 @@
           ]
         };
       }
-      
+
       // Update the recommendation display
       document.getElementById('resultTitle').textContent = recommendedMethod.name;
       document.getElementById('resultDescription').textContent = recommendedMethod.description;
       document.getElementById('resultSuitableFor').textContent = recommendedMethod.suitableFor;
       document.getElementById('resultTimeframe').textContent = recommendedMethod.typicalTimeframe;
-      
+
       // Clear and populate lists
       const advantagesList = document.getElementById('resultAdvantages');
       const disadvantagesList = document.getElementById('resultDisadvantages');
-      
+
       advantagesList.innerHTML = '';
       disadvantagesList.innerHTML = '';
-      
+
       recommendedMethod.advantages.forEach(item => {
         const li = document.createElement('li');
         li.textContent = item;
         advantagesList.appendChild(li);
       });
-      
+
       recommendedMethod.disadvantages.forEach(item => {
         const li = document.createElement('li');
         li.textContent = item;
         disadvantagesList.appendChild(li);
       });
-      
+
       // Show the results
       showStep('step4');
     }
-    
+
     function getPurchaseTypeLabel(purchaseType) {
       const labels = {
         // Standard Categories
@@ -1113,17 +1150,17 @@
         'solutions': 'Technical Solutions',
         'construction': 'Construction/Facilities',
         'recurring_needs': 'Recurring Needs',
-        
+
         // Emergency Categories
         'emergency': 'Life/Safety Emergency',
         'critical_need': 'Critical Operational Need',
         'disaster_response': 'Natural Disaster Response',
-        
+
         // Sole Source Categories
         'proprietary': 'Proprietary/Sole Vendor',
         'unique_source': 'Unique Source',
         'compatible_with_existing': 'Compatible with Existing',
-        
+
         // Exceptions to Competition
         'arts_media_speakers': 'Performing Artists/Speakers (No $ Limit)',
         'arts_media_limited': 'Media/Game Officials (Up to $200K)',
@@ -1155,14 +1192,14 @@
         'sponsorships': 'Sponsorships (Up to $200K)',
         'honoraria': 'Honoraria (Up to $200K)',
         'facilitators_mediators': 'Facilitators & Mediators (Up to $200K)',
-        
+
         // Other
         'existing_contract': 'Using Existing Contract'
       };
-      
+
       return labels[purchaseType] || purchaseType;
     }
-    
+
     function capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     }
