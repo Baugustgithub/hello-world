@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
     specialized: '',
     singleSource: '',
     emergency: '',
+    sbsdCertified: '',
     exception: 'none'
   };
 
@@ -118,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
       specialized: '',
       singleSource: '',
       emergency: '',
+      sbsdCertified: '',
       exception: 'none'
     };
 
@@ -126,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('exception').value = 'none';
     
     // Reset all radio buttons
-    const radioGroups = ['existingContract', 'value', 'specialized', 'singleSource', 'emergency'];
+    const radioGroups = ['existingContract', 'value', 'specialized', 'singleSource', 'emergency', 'sbsdCertified'];
     radioGroups.forEach(groupName => {
       const radios = document.getElementsByName(groupName);
       for (let i = 0; i < radios.length; i++) {
@@ -226,8 +228,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const specializedSelected = document.querySelector('input[name="specialized"]:checked');
     const singleSourceSelected = document.querySelector('input[name="singleSource"]:checked');
     const emergencySelected = document.querySelector('input[name="emergency"]:checked');
+    const sbsdCertifiedSelected = document.querySelector('input[name="sbsdCertified"]:checked');
     
-    return valueSelected && specializedSelected && singleSourceSelected && emergencySelected;
+    return valueSelected && specializedSelected && singleSourceSelected && emergencySelected && sbsdCertifiedSelected;
   }
 
   // Step 3: Next Button
@@ -242,6 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
     userSelections.specialized = document.querySelector('input[name="specialized"]:checked').value;
     userSelections.singleSource = document.querySelector('input[name="singleSource"]:checked').value;
     userSelections.emergency = document.querySelector('input[name="emergency"]:checked').value;
+    userSelections.sbsdCertified = document.querySelector('input[name="sbsdCertified"]:checked').value;
     userSelections.exception = document.getElementById('exception').value;
     
     // Determine procurement method based on criteria
@@ -354,6 +358,25 @@ document.addEventListener('DOMContentLoaded', function() {
         timeline = 'Timeline: Typically 5-15 business days after submitting the requisition and supporting documentation.';
       }
     }
+    // Check for SBSD Certified Spot Award eligibility
+    else if (userSelections.sbsdCertified === 'yes' && 
+             (userSelections.value === '10kTo200k') && 
+             userSelections.emergency === 'no' && 
+             userSelections.singleSource === 'no' && 
+             userSelections.exception === 'none') {
+      // Primary method with SBSD option mention
+      if (userSelections.specialized === 'yes') {
+        procurementMethod = 'Best Value Acquisition (BVA)';
+        description = 'For specialized purchases in this range, a Best Value Acquisition allows award based on multiple criteria (quality, delivery, vendor experience), not just price.';
+        additionalInfo = 'Submit a requisition in RealSource. University Purchasing will manage the BVA process, soliciting at least four Small Business and Supplier Diversity (SBSD) certified firms.<br><br><strong>SBSD Certified Spot Award Potential:</strong> Since your vendor is SBSD certified, the procurement may POSSIBLY qualify for an SBSD Certified Spot Award if the vendor has never received a Spot Award previously and meets other requirements. Procurement Services will determine if this option is available during the procurement process.';
+        timeline = 'Timeline: 15-60+ days, depending on the complexity of the purchase and vendor responses. The timeline may be shorter if an SBSD Certified Spot Award can be utilized.';
+      } else {
+        procurementMethod = 'Request for Quote (RFQ)';
+        description = 'For standard items/services in this value range, a Request for Quote process is used with award based on the lowest price.';
+        additionalInfo = 'Submit a requisition in RealSource. University Purchasing will manage the RFQ process, soliciting at least four SBSD certified firms.<br><br><strong>SBSD Certified Spot Award Potential:</strong> Since your vendor is SBSD certified, the procurement may POSSIBLY qualify for an SBSD Certified Spot Award if the vendor has never received a Spot Award previously and meets other requirements. Procurement Services will determine if this option is available during the procurement process.';
+        timeline = 'Timeline: 5-15+ days, depending on the complexity of the purchase and vendor responses. The timeline may be shorter if an SBSD Certified Spot Award can be utilized.';
+      }
+    }
     // Standard procurement methods (for all other cases, not under 10k)
     else if (userSelections.emergency === 'yes') {
       procurementMethod = 'Emergency Procurement';
@@ -462,6 +485,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <li><strong>Specialized/Unique:</strong> ${userSelections.specialized === 'yes' ? 'Yes' : 'No'}</li>
         <li><strong>Single Source:</strong> ${userSelections.singleSource === 'yes' ? 'Yes' : 'No'}</li>
         <li><strong>Emergency:</strong> ${userSelections.emergency === 'yes' ? 'Yes' : 'No'}</li>
+        <li><strong>SBSD Certified Vendor:</strong> ${userSelections.sbsdCertified === 'yes' ? 'Yes' : 'No'}</li>
         ${exceptionInfo}
       </ul>
 
@@ -549,6 +573,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const specialized = document.querySelector('input[name="specialized"]:checked')?.value || 'Not specified';
     const singleSource = document.querySelector('input[name="singleSource"]:checked')?.value || 'Not specified';
     const emergency = document.querySelector('input[name="emergency"]:checked')?.value || 'Not specified';
+    const sbsdCertified = document.querySelector('input[name="sbsdCertified"]:checked')?.value || 'Not specified';
     const exception = document.getElementById('exception').value;
     
     // Get the result content - convert HTML to text
@@ -612,6 +637,7 @@ document.addEventListener('DOMContentLoaded', function() {
       ['Complex/Specialized:', specialized === 'yes' ? 'Yes' : 'No'],
       ['Single Source:', singleSource === 'yes' ? 'Yes' : 'No'],
       ['Emergency:', emergency === 'yes' ? 'Yes' : 'No'],
+      ['SBSD Certified Vendor:', sbsdCertified === 'yes' ? 'Yes' : 'No'],
       ['Exception to Competition:', exceptionText]
     ];
     
