@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VCU Procurement Method Guide</title>
+  <title>Procurement Method Guide</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Base styles */
+    /* Theme Colors */
     :root {
-      --primary: #004B87;
-      --primary-hover: #003A6A;
+      --primary: #F8B300; /* Gold */
+      --primary-hover: #D69A00;
+      --secondary: #111111; /* Black */
+      --secondary-hover: #333333;
+      --accent: #5A5A5A; /* Gray */
+      --accent-hover: #888888;
       --muted: #f3f4f6;
       --muted-foreground: #6B7280;
       --border: #E5E7EB;
@@ -21,6 +25,7 @@
       --card-foreground: #374151;
       --radius: 0.5rem;
       --ring: #E5E7EB;
+      --blue: #004B87; /* Blue for accents */
     }
     
     * {
@@ -96,9 +101,9 @@
     }
     
     .card-description {
+      font-size: 0.875rem;
       color: var(--muted-foreground);
       margin-top: 0.25rem;
-      font-size: 0.875rem;
     }
     
     .card-content {
@@ -106,71 +111,11 @@
     }
     
     .card-footer {
-      padding: 1rem 1.5rem;
+      padding: 1.25rem 1.5rem;
       border-top: 1px solid var(--border);
       display: flex;
       justify-content: flex-end;
-    }
-    
-    /* Border highlight */
-    .border-primary {
-      border-color: rgba(0, 75, 135, 0.5);
-    }
-    
-    /* Grid layouts */
-    .grid {
-      display: grid;
-      gap: 1rem;
-    }
-    
-    .grid-cols-1 {
-      grid-template-columns: repeat(1, 1fr);
-    }
-    
-    @media (min-width: 640px) {
-      .sm\:grid-cols-2 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .lg\:grid-cols-3 {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      
-      .lg\:grid-cols-2 {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    /* Alert component */
-    .alert {
-      border-radius: var(--radius);
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border: 1px solid var(--border);
-      background-color: #F9FAFB;
-      position: relative;
-      padding-left: 2.5rem;
-    }
-    
-    .alert-title {
-      font-weight: 500;
-      margin-bottom: 0.25rem;
-    }
-    
-    .alert-description {
-      font-size: 0.875rem;
-      color: var(--muted-foreground);
-    }
-    
-    .alert-icon {
-      position: absolute;
-      left: 1rem;
-      top: 1rem;
-      width: 1rem;
-      height: 1rem;
-      color: var(--muted-foreground);
+      gap: 0.75rem;
     }
     
     /* Button styles */
@@ -179,174 +124,41 @@
       align-items: center;
       justify-content: center;
       border-radius: var(--radius);
-      font-weight: 500;
       font-size: 0.875rem;
-      line-height: 1.25rem;
+      font-weight: 500;
       padding: 0.5rem 1rem;
-      transition-property: background-color, border-color, color;
-      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-      transition-duration: 150ms;
+      transition: all 0.2s ease-in-out;
       cursor: pointer;
+      border: 1px solid transparent;
     }
     
     .button-primary {
       background-color: var(--primary);
-      color: white;
-      border: 1px solid var(--primary);
+      color: #FFFFFF;
     }
     
     .button-primary:hover {
       background-color: var(--primary-hover);
     }
     
+    .button-secondary {
+      background-color: var(--secondary);
+      color: #FFFFFF;
+    }
+    
+    .button-secondary:hover {
+      background-color: var(--secondary-hover);
+    }
+    
     .button-outline {
       background-color: transparent;
+      border-color: var(--border);
       color: var(--foreground);
-      border: 1px solid var(--border);
     }
     
     .button-outline:hover {
+      border-color: var(--accent);
       background-color: var(--muted);
-    }
-    
-    /* Utility classes */
-    .space-y-1 > * + * {
-      margin-top: 0.25rem;
-    }
-    
-    .space-y-4 > * + * {
-      margin-top: 1rem;
-    }
-    
-    .mb-1 {
-      margin-bottom: 0.25rem;
-    }
-    
-    .mb-2 {
-      margin-bottom: 0.5rem;
-    }
-    
-    .mb-3 {
-      margin-bottom: 0.75rem;
-    }
-    
-    .mb-4 {
-      margin-bottom: 1rem;
-    }
-    
-    .mb-6 {
-      margin-bottom: 1.5rem;
-    }
-    
-    .mt-2 {
-      margin-top: 0.5rem;
-    }
-    
-    .ml-2 {
-      margin-left: 0.5rem;
-    }
-    
-    .text-sm {
-      font-size: 0.875rem;
-    }
-    
-    .text-xs {
-      font-size: 0.75rem;
-    }
-    
-    .text-lg {
-      font-size: 1.125rem;
-    }
-    
-    .text-base {
-      font-size: 1rem;
-    }
-    
-    .font-medium {
-      font-weight: 500;
-    }
-    
-    .text-muted-foreground {
-      color: var(--muted-foreground);
-    }
-    
-    .bg-primary\/5 {
-      background-color: rgba(0, 75, 135, 0.05);
-    }
-    
-    .pt-0 {
-      padding-top: 0;
-    }
-    
-    .pt-6 {
-      padding-top: 1.5rem;
-    }
-    
-    .pb-2 {
-      padding-bottom: 0.5rem;
-    }
-    
-    .pb-3 {
-      padding-bottom: 0.75rem;
-    }
-    
-    .flex {
-      display: flex;
-    }
-    
-    .flex-col {
-      flex-direction: column;
-    }
-    
-    .items-center {
-      align-items: center;
-    }
-    
-    .justify-between {
-      justify-content: space-between;
-    }
-    
-    .p-4 {
-      padding: 1rem;
-    }
-    
-    .rounded-lg {
-      border-radius: 0.5rem;
-    }
-    
-    .border {
-      border: 1px solid var(--border);
-    }
-    
-    .hover\:bg-muted:hover {
-      background-color: var(--muted);
-    }
-    
-    .transition-colors {
-      transition-property: background-color, border-color, color;
-      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-      transition-duration: 150ms;
-    }
-    
-    /* Link styles */
-    a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-    
-    a:hover {
-      text-decoration: underline;
-    }
-    
-    /* List styles */
-    ul {
-      list-style-type: disc;
-      padding-left: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    li {
-      margin-bottom: 0.25rem;
     }
     
     /* Form styles */
@@ -356,6 +168,7 @@
     
     .form-label {
       display: block;
+      font-size: 0.875rem;
       font-weight: 500;
       margin-bottom: 0.5rem;
     }
@@ -498,174 +311,252 @@
       background-color: var(--border);
       margin: 1.5rem 0;
     }
+    
+    /* Alert */
+    .alert {
+      display: flex;
+      padding: 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      margin-bottom: 1rem;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background-color: #F9FAFB;
+    }
+    
+    .alert-icon {
+      flex-shrink: 0;
+      width: 1rem;
+      height: 1rem;
+      margin-top: 0.125rem;
+    }
+    
+    .alert-title {
+      font-weight: 500;
+      font-size: 0.875rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .alert-description {
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+    }
+    
+    /* Progress indicator */
+    .step-indicator {
+      display: flex;
+      margin-bottom: 2rem;
+    }
+    
+    .step {
+      flex: 1;
+      text-align: center;
+      padding: 0.5rem;
+      position: relative;
+    }
+    
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 1rem;
+      right: 0;
+      width: calc(100% - 2rem);
+      height: 2px;
+      background-color: var(--border);
+      z-index: 0;
+    }
+    
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background-color: var(--muted);
+      border: 2px solid var(--border);
+      color: var(--muted-foreground);
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 0.5rem;
+    }
+    
+    .step.active .step-number {
+      background-color: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+    
+    .step-title {
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    
+    /* Utility classes */
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+    
+    .mt-2 {
+      margin-top: 0.5rem;
+    }
+    
+    .mb-3 {
+      margin-bottom: 0.75rem;
+    }
+    
+    .mr-2 {
+      margin-right: 0.5rem;
+    }
+    
+    .space-y-1 > * + * {
+      margin-top: 0.25rem;
+    }
+    
+    .flex {
+      display: flex;
+    }
+    
+    .items-center {
+      align-items: center;
+    }
+    
+    .text-sm {
+      font-size: 0.875rem;
+    }
+    
+    .text-lg {
+      font-size: 1.125rem;
+    }
+    
+    .font-medium {
+      font-weight: 500;
+    }
+    
+    .grid {
+      display: grid;
+    }
+    
+    .grid-cols-1 {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    
+    .gap-4 {
+      gap: 1rem;
+    }
+    
+    @media (min-width: 1024px) {
+      .lg\:grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>VCU Procurement Method Guide</h1>
+    <h1>Procurement Method Selection Guide</h1>
+    
+    <div class="step-indicator">
+      <div class="step active" id="stepIndicator1">
+        <div class="step-number">1</div>
+        <div class="step-title">Start</div>
+      </div>
+      <div class="step" id="stepIndicator2">
+        <div class="step-number">2</div>
+        <div class="step-title">Existing Contract</div>
+      </div>
+      <div class="step" id="stepIndicator3">
+        <div class="step-number">3</div>
+        <div class="step-title">Criteria</div>
+      </div>
+      <div class="step" id="stepIndicator4">
+        <div class="step-number">4</div>
+        <div class="step-title">Result</div>
+      </div>
+    </div>
     
     <!-- Step 1: Introduction -->
     <div id="step1" class="card">
-      <div class="card-header pb-3">
-        <div class="card-title flex items-center">
-          <span>Procurement Method Selection Guide</span>
-        </div>
+      <div class="card-header">
+        <div class="card-title">Determine the Right Procurement Method</div>
         <div class="card-description">
-          Follow this guide to determine the most appropriate procurement approach for your needs.
+          This guide will help you identify the appropriate procurement method based on your specific needs.
         </div>
       </div>
       <div class="card-content">
-        <h3 class="text-lg font-medium mb-3">Overview of VCU Procurement Methods</h3>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-          <div class="card border-primary">
-            <div class="card-header pb-2">
-              <div class="card-title text-base">Up to $10,000</div>
-              <div class="card-description">Delegated Authority</div>
-            </div>
-            <div class="card-content pt-0">
-              <p class="text-sm">Departments can make purchases directly through RealSource or through use of a Pcard. Look for existing contracts first to maximize value. Follows a self-service model with required documentation.</p>
-              <p class="text-xs text-muted-foreground mt-2">Use appropriate payment method based on supplier requirements.</p>
-            </div>
-          </div>
-          
-          <div class="card border-primary">
-            <div class="card-header pb-2">
-              <div class="card-title text-base">$10,000 to $200,000</div>
-              <div class="card-description">Small Purchase Methods</div>
-            </div>
-            <div class="card-content pt-0">
-              <ul class="text-sm space-y-1">
-                <li><strong>BVA:</strong> Best Value Acquisition (multiple criteria)</li>
-                <li><strong>RFQ:</strong> Request for Quote (lowest price)</li>
-              </ul>
-              <p class="text-xs text-muted-foreground mt-2">Timeline: 5-60+ days based on complexity</p>
-            </div>
-          </div>
-          
-          <div class="card border-primary">
-            <div class="card-header pb-2">
-              <div class="card-title text-base">Over $200,000</div>
-              <div class="card-description">Formal Process</div>
-            </div>
-            <div class="card-content pt-0">
-              <ul class="text-sm space-y-1">
-                <li><strong>RFP:</strong> Request for Proposal (best overall value)</li>
-                <li><strong>IFB:</strong> Invitation for Bid (lowest price)</li>
-              </ul>
-              <p class="text-xs text-muted-foreground mt-2">Timeline: 45-125+ days based on complexity</p>
-            </div>
-          </div>
-        </div>
-        
-        <h3 class="text-lg font-medium mb-3">Alternative Methods</h3>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
-          <div>
-            <h4 class="font-medium mb-2">Cooperative Procurement</h4>
-            <p class="text-sm mb-2">Use existing contracts established by other public entities to streamline purchasing.</p>
-            <p class="text-xs text-muted-foreground">Timeline: 5-10+ business days</p>
-          </div>
-          
-          <div>
-            <h4 class="font-medium mb-2">Sole Source Procurement</h4>
-            <p class="text-sm mb-2">When a product/service is only available from one source. Requires justification.</p>
-            <p class="text-xs text-muted-foreground">Timeline: 5-15+ business days</p>
-          </div>
-          
-          <div>
-            <h4 class="font-medium mb-2">Emergency Procurement</h4>
-            <p class="text-sm mb-2">For urgent purchases where delay would cause serious harm.</p>
-            <p class="text-xs text-muted-foreground">Timeline: 1-5 business days</p>
-          </div>
-          
-          <div>
-            <h4 class="font-medium mb-2">Exceptions to Competition</h4>
-            <p class="text-sm mb-2">Specific categories exempt from competition requirements (e.g., educational materials, legal services).</p>
-            <p class="text-xs text-muted-foreground">Timeline: 5-15+ business days</p>
-          </div>
-        </div>
+        <p>
+          Finding the right procurement method is crucial for ensuring compliance with regulations and obtaining the best value. This tool will guide you through the selection process based on your purchase details.
+        </p>
         
         <div class="alert">
           <span class="alert-icon icon-alert-circle"></span>
-          <div class="alert-title">First Step: Check for Existing Contracts</div>
-          <div class="alert-description">
-            Before proceeding with a new solicitation, you should always first check if there are existing VCU contracts or cooperative contracts that can be utilized.
+          <div>
+            <div class="alert-title">Important Note</div>
+            <div class="alert-description">
+              This tool provides general guidance based on common procurement practices. Always consult with your procurement office for official guidance.
+            </div>
           </div>
         </div>
       </div>
       <div class="card-footer">
-        <button class="button button-primary" onclick="showStep('step2')">
-          Get Started <span class="icon icon-arrow-right ml-2"></span>
-        </button>
+        <button class="button button-primary" onclick="showStep('step2')">Get Started <span class="icon icon-arrow-right" style="margin-left: 0.25rem;"></span></button>
       </div>
     </div>
     
-    <!-- Step 2: Contracts Check Dialog -->
-    <div id="step2" class="card mb-6 border-primary" style="display: none;">
-      <div class="card-header bg-primary\/5">
-        <div class="card-title">Check for Existing Contracts First</div>
+    <!-- Step 2: Existing Contract Check -->
+    <div id="step2" class="card" style="display: none;">
+      <div class="card-header">
+        <div class="card-title">Check for Existing Contracts</div>
         <div class="card-description">
-          Before proceeding with a new solicitation, check if there are existing VCU contracts or cooperative contracts that can be utilized.
+          First, determine if there's an existing contract that meets your needs.
         </div>
       </div>
-      <div class="card-content pt-6">
+      <div class="card-content">
+        <p>Before starting a new procurement process, check if there are existing contracts available that meet your requirements.</p>
+        
         <div class="alert">
           <span class="alert-icon icon-alert-circle"></span>
-          <div class="alert-title">Why Check for Existing Contracts?</div>
-          <div class="alert-description">
-            Using existing contracts can save significant time and resources. It eliminates the need for a new competitive solicitation process.
+          <div>
+            <div class="alert-title">Have you checked for existing contracts?</div>
+            <div class="alert-description">
+              Using an existing contract is often faster and more efficient than starting a new procurement process.
+            </div>
           </div>
         </div>
         
-        <div class="space-y-4">
-          <h3 class="text-lg font-medium">Resources to Check:</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <a href="https://vascupp.org/contracts" target="_blank" rel="noopener noreferrer" class="flex items-center p-4 border rounded-lg hover:bg-muted transition-colors">
-              <div>
-                <h4 class="font-medium">VASCUPP Contracts</h4>
-                <p class="text-sm text-muted-foreground">Virginia Higher Education Procurement Cooperative</p>
-              </div>
-            </a>
-            
-            <a href="https://vhepc.cobblestone.software/public/" target="_blank" rel="noopener noreferrer" class="flex items-center p-4 border rounded-lg hover:bg-muted transition-colors">
-              <div>
-                <h4 class="font-medium">VHEPC Contracts</h4>
-                <p class="text-sm text-muted-foreground">Virginia Higher Education Procurement Consortium</p>
-              </div>
-            </a>
-            
-            <a href="https://www.withpavilion.com" target="_blank" rel="noopener noreferrer" class="flex items-center p-4 border rounded-lg hover:bg-muted transition-colors">
-              <div>
-                <h4 class="font-medium">Pavilion Contracts</h4>
-                <p class="text-sm text-muted-foreground">Cooperative Purchasing Organization</p>
-              </div>
-            </a>
-          </div>
+        <h3 class="mb-3">Do you have an existing contract available?</h3>
+        <div class="radio-group mb-4">
+          <label class="radio-item">
+            <input type="radio" name="existing_contract" value="yes" onchange="existingContractSelected(true)" />
+            <span class="radio-checkmark"></span>
+            Yes, I've found an existing contract that meets my needs
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="existing_contract" value="no" onchange="existingContractSelected(false)" checked />
+            <span class="radio-checkmark"></span>
+            No, I need to initiate a new procurement
+          </label>
         </div>
       </div>
-      <div class="card-footer flex justify-between">
-        <button class="button button-outline" onclick="showStep('step3')">
-          No Existing Contract Found
-        </button>
-        <button class="button button-primary" onclick="showContractFound()">
-          Found Suitable Contract <span class="icon icon-check-circle ml-2"></span>
-        </button>
+      <div class="card-footer">
+        <button class="button button-outline" onclick="showStep('step1')">Back</button>
+        <button class="button button-primary" onclick="showStep('step3')">Continue</button>
       </div>
     </div>
     
-    <!-- Step 3: Procurement Selection Form -->
+    <!-- Step 3: Procurement Details -->
     <div id="step3" class="card" style="display: none;">
       <div class="card-header">
-        <div class="card-title">Select Procurement Parameters</div>
+        <div class="card-title">Enter Procurement Details</div>
         <div class="card-description">
-          Fill out this form to determine the most appropriate procurement method.
+          Provide information about your purchase to determine the appropriate method.
         </div>
       </div>
       <div class="card-content">
         <form id="procurementForm">
           <div class="form-group">
-            <label class="form-label" for="estimatedValue">Estimated Value</label>
+            <label class="form-label">Estimated Dollar Value</label>
             <input id="estimatedValue" class="form-control" type="text" placeholder="e.g. 50000" />
             <div class="form-helper">Enter the estimated dollar value of the purchase (numbers only).</div>
           </div>
@@ -673,11 +564,59 @@
           <div class="form-group">
             <label class="form-label">Purchase Type</label>
             <select id="purchaseType" class="form-control">
-              <option value="goods">Standard Goods</option>
-              <option value="services">Standard Services</option>
-              <option value="consulting">Consulting Services</option>
-              <option value="solutions">Technical Solutions</option>
-              <option value="construction">Construction/Facilities</option>
+              <optgroup label="Standard Categories">
+                <option value="goods">Standard Goods</option>
+                <option value="services">Standard Services</option>
+                <option value="consulting">Consulting Services</option>
+                <option value="solutions">Technical Solutions</option>
+                <option value="construction">Construction/Facilities</option>
+                <option value="recurring_needs">Recurring Needs</option>
+              </optgroup>
+              <optgroup label="Emergency Categories">
+                <option value="emergency">Life/Safety Emergency</option>
+                <option value="critical_need">Critical Operational Need</option>
+                <option value="disaster_response">Natural Disaster Response</option>
+              </optgroup>
+              <optgroup label="Sole Source Categories">
+                <option value="proprietary">Proprietary/Sole Vendor</option>
+                <option value="unique_source">Unique Source</option>
+                <option value="compatible_with_existing">Compatible with Existing</option>
+              </optgroup>
+              <optgroup label="Exceptions to Competition">
+                <option value="arts_media_speakers">Performing Artists/Speakers (No $ Limit)</option>
+                <option value="arts_media_limited">Media/Game Officials (Up to $200K)</option>
+                <option value="educational_institutions">Educational Institutions (No $ Limit)</option>
+                <option value="education_research_limited">Education/Research Services (Up to $200K)</option>
+                <option value="conference_facilities">Conference Facilities (No $ Limit)</option>
+                <option value="foreign_group_travel">Foreign Travel Arrangements (No $ Limit)</option>
+                <option value="athletic_events">Athletic Events (No $ Limit)</option>
+                <option value="international_purchases">International Purchases (Up to $200K)</option>
+                <option value="legal_services">Legal Services (No $ Limit)</option>
+                <option value="health_services_limited">Health/Medical Services (Up to $200K)</option>
+                <option value="utilities">Utilities & Infrastructure (No $ Limit)</option>
+                <option value="memberships_subscriptions">Memberships/Subscriptions (No $ Limit)</option>
+                <option value="public_auctions">Public Auctions/Surplus (No $ Limit)</option>
+                <option value="gov_sponsored_research">Gov't Sponsored Research (No $ Limit)</option>
+                <option value="used_equipment">Used Equipment (Up to $200K)</option>
+                <option value="awards_gifts">Awards, Gifts, Souvenirs (Up to $200K)</option>
+                <option value="charitable_organizations">Charitable Organizations (No $ Limit)</option>
+                <option value="student_field_trips">Student Field Trips (No $ Limit)</option>
+                <option value="academic_peer_review">Academic Peer Review (No $ Limit)</option>
+                <option value="maintenance_repair">Equipment Maintenance & Repair (Up to $200K)</option>
+                <option value="exclusive_software">Specialized Software & Databases (Up to $200K)</option>
+                <option value="real_estate_leases">Real Estate Leases (Up to $200K)</option>
+                <option value="govt_sources">Government Sources (No $ Limit)</option>
+                <option value="special_workshops">Sheltered Workshops & Blind Services (No $ Limit)</option>
+                <option value="grant_subawards">Grant Sub-awards (No $ Limit)</option>
+                <option value="royalties">Royalties (No $ Limit)</option>
+                <option value="pass_through">Pass-Through Procurements (Up to $200K)</option>
+                <option value="sponsorships">Sponsorships (Up to $200K)</option>
+                <option value="honoraria">Honoraria (Up to $200K)</option>
+                <option value="facilitators_mediators">Facilitators & Mediators (Up to $200K)</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option value="existing_contract">Using Existing Contract</option>
+              </optgroup>
             </select>
             <div class="form-helper">Select the category that best describes what you're purchasing.</div>
           </div>
@@ -797,16 +736,16 @@
             <span class="alert-icon icon-alert-circle"></span>
             <div class="alert-title">Next Steps</div>
             <div class="alert-description">
-              Contact VCU Procurement Services to initiate this process. Be sure to have your specifications and requirements documented.
+              Contact your procurement services department to initiate this process. Be sure to have your specifications and requirements documented.
             </div>
           </div>
         </div>
       </div>
       <div class="card-footer">
         <button class="button button-outline" onclick="showStep('step3')">Go Back</button>
-        <a href="https://procurement.vcu.edu/i-buy-for-vcu/process/" target="_blank" rel="noopener noreferrer" class="button button-primary">
-          Learn More About This Process
-        </a>
+        <button class="button button-primary" onclick="window.print()">
+          Print This Recommendation
+        </button>
       </div>
     </div>
     
@@ -832,14 +771,14 @@
           <ol class="space-y-1">
             <li>Verify the contract terms and conditions meet your specific requirements</li>
             <li>Contact the contract administrator for pricing and ordering information</li>
-            <li>Follow VCU's procedures for using existing contracts</li>
+            <li>Follow your organization's procedures for using existing contracts</li>
             <li>Document your use of the existing contract in your procurement file</li>
           </ol>
         </div>
         
-        <a href="https://procurement.vcu.edu/i-buy-for-vcu/using-existing-contracts/" target="_blank" rel="noopener noreferrer" class="button button-primary">
-          Contract Usage Guidelines
-        </a>
+        <button class="button button-primary" onclick="window.print()">
+          Print This Information
+        </button>
       </div>
     </div>
   </div>
@@ -856,10 +795,36 @@
       
       // Show the requested step
       document.getElementById(stepId).style.display = 'block';
+      
+      // Update step indicators
+      document.getElementById('stepIndicator1').classList.remove('active');
+      document.getElementById('stepIndicator2').classList.remove('active');
+      document.getElementById('stepIndicator3').classList.remove('active');
+      document.getElementById('stepIndicator4').classList.remove('active');
+      
+      if (stepId === 'step1') {
+        document.getElementById('stepIndicator1').classList.add('active');
+      } else if (stepId === 'step2') {
+        document.getElementById('stepIndicator2').classList.add('active');
+      } else if (stepId === 'step3') {
+        document.getElementById('stepIndicator3').classList.add('active');
+      } else if (stepId === 'step4' || stepId === 'contractFound') {
+        document.getElementById('stepIndicator4').classList.add('active');
+      }
     }
     
     function showContractFound() {
       showStep('contractFound');
+    }
+    
+    function existingContractSelected(yesSelected) {
+      if (yesSelected) {
+        // If user selects "Yes" for existing contract, update the purchase type dropdown
+        document.getElementById('purchaseType').value = 'existing_contract';
+      } else {
+        // If user selects "No", reset the dropdown to the first option
+        document.getElementById('purchaseType').value = 'goods';
+      }
     }
     
     // Format currency
@@ -885,6 +850,12 @@
         return;
       }
       
+      // Special handling for existing contract
+      if (purchaseType === 'existing_contract') {
+        showContractFound();
+        return;
+      }
+      
       // Set form result data
       document.getElementById('resultValue').textContent = formatCurrency(estimatedValue);
       document.getElementById('resultType').textContent = getPurchaseTypeLabel(purchaseType);
@@ -898,7 +869,7 @@
       if (valueNum <= 10000) {
         recommendedMethod = {
           name: "Delegated Authority",
-          description: "Departments can directly procure goods and services under $10,000 using a Pcard or eVA.",
+          description: "Departments can directly procure goods and services under $10,000 using a credit card or electronic procurement system.",
           suitableFor: "Low-dollar routine purchases that don't require extensive competition.",
           typicalTimeframe: "Immediate to several days",
           advantages: [
@@ -909,7 +880,7 @@
           disadvantages: [
             "Limited to purchases under $10,000",
             "Still requires documentation of fair and reasonable pricing",
-            "Must follow all VCU policies and procedures"
+            "Must follow all organizational policies and procedures"
           ]
         };
       } else if (valueNum <= 200000) {
@@ -989,7 +960,7 @@
       
       // Handle special cases - emergency needs
       if (timeline === 'urgent' && complexity !== 'high') {
-        if (purchaseType === 'emergency' || purchaseType === 'disaster_response') {
+        if (purchaseType === 'emergency' || purchaseType === 'disaster_response' || purchaseType === 'critical_need') {
           recommendedMethod = {
             name: "Emergency Procurement",
             description: "An expedited process for urgent needs where following normal procedures would cause harm or significant operational impact.",
@@ -1010,7 +981,7 @@
       }
       
       // Special case for sole source
-      if (purchaseType === 'proprietary' || purchaseType === 'unique_source') {
+      if (purchaseType === 'proprietary' || purchaseType === 'unique_source' || purchaseType === 'compatible_with_existing') {
         recommendedMethod = {
           name: "Sole Source Procurement",
           description: "A process used when only one vendor can provide the required goods or services.",
@@ -1025,6 +996,81 @@
             "Requires thorough sole source justification",
             "May result in higher prices due to lack of competition",
             "Subject to additional scrutiny"
+          ]
+        };
+      }
+      
+      // Special case for recurring needs
+      if (purchaseType === 'recurring_needs') {
+        if (valueNum > 200000) {
+          recommendedMethod = {
+            name: "Term Contract",
+            description: "A long-term agreement that establishes pricing and terms for recurring purchases over a specific period.",
+            suitableFor: "Recurring needs where establishing a relationship with one or more vendors provides better pricing and service.",
+            typicalTimeframe: "60-120+ days to establish",
+            advantages: [
+              "Simplified ordering process once established",
+              "Volume discounts and better pricing",
+              "Reduced administrative burden for repeat purchases"
+            ],
+            disadvantages: [
+              "Significant upfront time to establish",
+              "Requires forecasting future needs",
+              "May limit flexibility for changing requirements"
+            ]
+          };
+        } else {
+          recommendedMethod = {
+            name: "Small Purchase Term Contract",
+            description: "A simplified term agreement for recurring purchases under $200,000.",
+            suitableFor: "Predictable, recurring purchases where establishing preset terms is beneficial.",
+            typicalTimeframe: "15-60 days to establish",
+            advantages: [
+              "Faster to establish than large term contracts",
+              "Reduced administrative work for repeat purchases",
+              "Consistent pricing and service levels"
+            ],
+            disadvantages: [
+              "Limited to purchases under $200,000",
+              "Typically shorter term than large contracts",
+              "May need periodic re-competition"
+            ]
+          };
+        }
+      }
+      
+      // Exceptions to Competition categories
+      const exceptionsToCompetition = [
+        'arts_media_speakers', 'arts_media_limited', 'educational_institutions', 
+        'education_research_limited', 'conference_facilities', 'foreign_group_travel', 
+        'athletic_events', 'international_purchases', 'legal_services', 
+        'health_services_limited', 'utilities', 'memberships_subscriptions', 
+        'public_auctions', 'gov_sponsored_research', 'used_equipment', 
+        'awards_gifts', 'charitable_organizations', 'student_field_trips', 
+        'academic_peer_review', 'maintenance_repair', 'exclusive_software', 
+        'real_estate_leases', 'govt_sources', 'special_workshops', 
+        'grant_subawards', 'royalties', 'pass_through', 
+        'sponsorships', 'honoraria', 'facilitators_mediators'
+      ];
+      
+      if (exceptionsToCompetition.includes(purchaseType)) {
+        const purchaseLabel = getPurchaseTypeLabel(purchaseType);
+        const hasLimit = purchaseLabel.includes('Up to $200K');
+        
+        recommendedMethod = {
+          name: "Exception to Competition",
+          description: `This purchase falls under the "${purchaseLabel}" exception category, which is exempt from standard competition requirements.`,
+          suitableFor: "Specific categories of purchases that are exempt from competition by policy.",
+          typicalTimeframe: "5-15+ business days",
+          advantages: [
+            "No competitive solicitation required",
+            "Streamlined purchasing process",
+            "Formal exemption already established by policy"
+          ],
+          disadvantages: [
+            "Must still document use of the exception",
+            "Must strictly adhere to the exception criteria",
+            hasLimit ? "Subject to dollar value limits" : "Should still ensure fair and reasonable pricing"
           ]
         };
       }
@@ -1060,15 +1106,58 @@
     
     function getPurchaseTypeLabel(purchaseType) {
       const labels = {
+        // Standard Categories
         'goods': 'Standard Goods',
         'services': 'Standard Services',
         'consulting': 'Consulting Services',
         'solutions': 'Technical Solutions',
         'construction': 'Construction/Facilities',
+        'recurring_needs': 'Recurring Needs',
+        
+        // Emergency Categories
         'emergency': 'Life/Safety Emergency',
+        'critical_need': 'Critical Operational Need',
         'disaster_response': 'Natural Disaster Response',
+        
+        // Sole Source Categories
         'proprietary': 'Proprietary/Sole Vendor',
-        'unique_source': 'Unique Source'
+        'unique_source': 'Unique Source',
+        'compatible_with_existing': 'Compatible with Existing',
+        
+        // Exceptions to Competition
+        'arts_media_speakers': 'Performing Artists/Speakers (No $ Limit)',
+        'arts_media_limited': 'Media/Game Officials (Up to $200K)',
+        'educational_institutions': 'Educational Institutions (No $ Limit)',
+        'education_research_limited': 'Education/Research Services (Up to $200K)',
+        'conference_facilities': 'Conference Facilities (No $ Limit)',
+        'foreign_group_travel': 'Foreign Travel Arrangements (No $ Limit)',
+        'athletic_events': 'Athletic Events (No $ Limit)',
+        'international_purchases': 'International Purchases (Up to $200K)',
+        'legal_services': 'Legal Services (No $ Limit)',
+        'health_services_limited': 'Health/Medical Services (Up to $200K)',
+        'utilities': 'Utilities & Infrastructure (No $ Limit)',
+        'memberships_subscriptions': 'Memberships/Subscriptions (No $ Limit)',
+        'public_auctions': 'Public Auctions/Surplus (No $ Limit)',
+        'gov_sponsored_research': 'Gov\'t Sponsored Research (No $ Limit)',
+        'used_equipment': 'Used Equipment (Up to $200K)',
+        'awards_gifts': 'Awards, Gifts, Souvenirs (Up to $200K)',
+        'charitable_organizations': 'Charitable Organizations (No $ Limit)',
+        'student_field_trips': 'Student Field Trips (No $ Limit)',
+        'academic_peer_review': 'Academic Peer Review (No $ Limit)',
+        'maintenance_repair': 'Equipment Maintenance & Repair (Up to $200K)',
+        'exclusive_software': 'Specialized Software & Databases (Up to $200K)',
+        'real_estate_leases': 'Real Estate Leases (Up to $200K)',
+        'govt_sources': 'Government Sources (No $ Limit)',
+        'special_workshops': 'Sheltered Workshops & Blind Services (No $ Limit)',
+        'grant_subawards': 'Grant Sub-awards (No $ Limit)',
+        'royalties': 'Royalties (No $ Limit)',
+        'pass_through': 'Pass-Through Procurements (Up to $200K)',
+        'sponsorships': 'Sponsorships (Up to $200K)',
+        'honoraria': 'Honoraria (Up to $200K)',
+        'facilitators_mediators': 'Facilitators & Mediators (Up to $200K)',
+        
+        // Other
+        'existing_contract': 'Using Existing Contract'
       };
       
       return labels[purchaseType] || purchaseType;
