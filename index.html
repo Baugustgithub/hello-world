@@ -578,10 +578,7 @@
               <optgroup label="Standard Categories">
                 <option value="goods">Standard Goods</option>
                 <option value="services">Standard Services</option>
-                <option value="consulting">Consulting Services</option>
-                <option value="solutions">Technical Solutions</option>
-                <option value="construction">Construction/Facilities</option>
-                <option value="recurring_needs">Recurring Needs</option>
+                <option value="goods_and_services">Standard Goods and Services</option>
               </optgroup>
               <optgroup label="Emergency Categories">
                 <option value="emergency">Life/Safety Emergency</option>
@@ -926,7 +923,7 @@
             name: "Best Value Acquisition (BVA)",
             description: "A small purchase procedure that considers factors beyond price, such as quality, vendor experience, and delivery time.",
             suitableFor: "Purchases where quality, expertise, and other factors are as important as price.",
-            typicalTimeframe: "15-60 days depending on complexity",
+            typicalTimeframe: "15-60+ days depending on complexity",
             advantages: [
               "Allows consideration of quality and expertise",
               "More flexible than quote-based methods",
@@ -943,7 +940,7 @@
             name: "Request for Quote (RFQ)",
             description: "A simplified process to obtain quotes from multiple vendors, with award typically made to the lowest priced vendor.",
             suitableFor: "Straightforward purchases where specifications are clear and price is the primary consideration.",
-            typicalTimeframe: "5-30 days depending on complexity",
+            typicalTimeframe: "5-15+ days depending on complexity",
             advantages: [
               "Faster than BVA process",
               "Simple evaluation based primarily on price",
@@ -958,12 +955,29 @@
         }
       } else {
         // Over $200,000
-        if (complexity === 'high' || purchaseType === 'consulting' || purchaseType === 'solutions') {
+        if (purchaseType === 'goods' && complexity === 'low') {
+          recommendedMethod = {
+            name: "Request for Proposal (RFP) or Invitation for Bid (IFB)",
+            description: "For standard goods with clear specifications, either an RFP or IFB can be used. An RFP is generally recommended, but IFB is also an option for straightforward goods procurement.",
+            suitableFor: "Standard goods purchases where specifications are clear and detailed.",
+            typicalTimeframe: "RFPs: 90-125+ days, IFBs: 45-90+ days",
+            advantages: [
+              "RFP allows consideration of quality and expertise",
+              "IFB offers transparent price-based selection",
+              "Both provide structured competitive processes"
+            ],
+            disadvantages: [
+              "Lengthy timeline for both methods",
+              "Significant documentation requirements",
+              "IFB has limited flexibility after bid opening"
+            ]
+          };
+        } else {
           recommendedMethod = {
             name: "Request for Proposal (RFP)",
             description: "A formal solicitation process that evaluates price along with other factors such as expertise, quality, and approach.",
             suitableFor: "Complex purchases where factors other than price are important considerations.",
-            typicalTimeframe: "60-120+ days",
+            typicalTimeframe: "90-125+ days",
             advantages: [
               "Allows for consideration of quality, expertise, and approach",
               "Flexible negotiation process",
@@ -975,28 +989,11 @@
               "Complex evaluation process"
             ]
           };
-        } else {
-          recommendedMethod = {
-            name: "Invitation for Bid (IFB)",
-            description: "A formal process where vendors bid on a specific set of requirements, with award made to the lowest responsive and responsible bidder.",
-            suitableFor: "Purchases with clear, detailed specifications where price is the primary factor.",
-            typicalTimeframe: "45-90+ days",
-            advantages: [
-              "Transparent price-based selection",
-              "Typically faster than RFP process",
-              "Clear, objective evaluation criteria"
-            ],
-            disadvantages: [
-              "Limited to price-based selection",
-              "Requires very detailed specifications",
-              "Limited flexibility after bid opening"
-            ]
-          };
         }
       }
 
-      // Handle special cases - emergency needs
-      if (timeline === 'urgent' && complexity !== 'high') {
+      // Handle special cases - emergency needs (only show for emergency categories that are explicitly marked as urgent)
+      if (timeline === 'urgent') {
         if (purchaseType === 'emergency' || purchaseType === 'disaster_response' || purchaseType === 'critical_need') {
           recommendedMethod = {
             name: "Emergency Procurement",
@@ -1044,7 +1041,7 @@
             name: "Term Contract",
             description: "A long-term agreement that establishes pricing and terms for recurring purchases over a specific period.",
             suitableFor: "Recurring needs where establishing a relationship with one or more vendors provides better pricing and service.",
-            typicalTimeframe: "60-120+ days to establish",
+            typicalTimeframe: "90-125+ days to establish",
             advantages: [
               "Simplified ordering process once established",
               "Volume discounts and better pricing",
@@ -1090,26 +1087,38 @@
         'sponsorships', 'honoraria', 'facilitators_mediators'
       ];
 
+      // Limited exceptions that are capped at $200K
+      const limitedExceptions = [
+        'arts_media_limited', 'education_research_limited', 'international_purchases',
+        'health_services_limited', 'used_equipment', 'awards_gifts', 'maintenance_repair',
+        'exclusive_software', 'real_estate_leases', 'pass_through', 'sponsorships',
+        'honoraria', 'facilitators_mediators'
+      ];
+
       if (exceptionsToCompetition.includes(purchaseType)) {
         const purchaseLabel = getPurchaseTypeLabel(purchaseType);
         const hasLimit = purchaseLabel.includes('Up to $200K');
-
-        recommendedMethod = {
-          name: "Exception to Competition",
-          description: `This purchase falls under the "${purchaseLabel}" exception category, which is exempt from standard competition requirements.`,
-          suitableFor: "Specific categories of purchases that are exempt from competition by policy.",
-          typicalTimeframe: "5-15+ business days",
-          advantages: [
-            "No competitive solicitation required",
-            "Streamlined purchasing process",
-            "Formal exemption already established by policy"
-          ],
-          disadvantages: [
-            "Must still document use of the exception",
-            "Must strictly adhere to the exception criteria",
-            hasLimit ? "Subject to dollar value limits" : "Should still ensure fair and reasonable pricing"
-          ]
-        };
+        
+        // Only use exception if value is under 200K for limited exceptions
+        if (!hasLimit || (hasLimit && valueNum <= 200000)) {
+          recommendedMethod = {
+            name: "Exception to Competition",
+            description: `This purchase falls under the "${purchaseLabel}" exception category, which is exempt from standard competition requirements.`,
+            suitableFor: "Specific categories of purchases that are exempt from competition by policy.",
+            typicalTimeframe: "5-15+ business days",
+            advantages: [
+              "No competitive solicitation required",
+              "Streamlined purchasing process",
+              "Formal exemption already established by policy"
+            ],
+            disadvantages: [
+              "Must still document use of the exception",
+              "Must strictly adhere to the exception criteria",
+              hasLimit ? "Subject to dollar value limits" : "Should still ensure fair and reasonable pricing"
+            ]
+          };
+        }
+        // If limited exception and value is over 200K, the logic will revert to normal rules automatically
       }
 
       // Update the recommendation display
@@ -1146,10 +1155,7 @@
         // Standard Categories
         'goods': 'Standard Goods',
         'services': 'Standard Services',
-        'consulting': 'Consulting Services',
-        'solutions': 'Technical Solutions',
-        'construction': 'Construction/Facilities',
-        'recurring_needs': 'Recurring Needs',
+        'goods_and_services': 'Standard Goods and Services',
 
         // Emergency Categories
         'emergency': 'Life/Safety Emergency',
