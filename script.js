@@ -251,8 +251,29 @@ document.addEventListener('DOMContentLoaded', function() {
     let timeline = '';
     let cooperativeInfo = '';
 
-    // If using cooperative contract, skip directly to results
-    if (userSelections.existingContract === 'yes') {
+    // Check for under 10k first - always show delegated authority regardless of other selections
+    if (userSelections.value === 'under10k') {
+      procurementMethod = 'Delegated Authority Purchase';
+      description = 'For purchases under $10,000, departments have delegated authority to make purchases without involving University Purchasing.';
+      additionalInfo = `<strong>Approach One</strong><br>
+      1. Review vendor document(s) (SOW, quote, order form, contract) to ensure it reflects what you wish to purchase.<br>
+      2. Create a Requisition in RealSource and attach vendor document(s).<br>
+      3. Obtain Requisition approvals and issue a Purchase Order.<br>
+      4. <strong>Do NOT sign any vendor documents.</strong><br><br>
+      
+      <strong>Approach Two</strong><br>
+      If the vendor rejects the Purchase Order because a signature is required, submit vendor documents through the Contracts+ module in RealSource. The Contracts team will negotiate and finalize the contract.<br><br>
+      
+      <strong>Pcard Purchases</strong><br>
+      • Follow Pcard rules and thresholds.<br>
+      • If no signature is required, pay with Pcard.<br>
+      • If a signature is required, send documents through Contracts+ in RealSource.<br><br>
+      
+      For additional options, submit a contract request via Contracts+. See the Contracts+ Help Guide on the RealSource homepage under Quick Links.`;
+      timeline = 'Timeline: 1-5 business days if using a Purchase Order; potentially longer if signature/contract required.';
+    }
+    // If using cooperative contract, skip directly to results (unless under 10k)
+    else if (userSelections.existingContract === 'yes') {
       procurementMethod = 'Use Existing Contract';
       description = 'You indicated there is an existing contract that meets your requirements. Using this contract is typically the most efficient approach.';
       additionalInfo = 'Contact University Purchasing for assistance with the order process through the existing contract.';
@@ -267,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="platform-button-name">VASCUPP</div>
           <div class="platform-button-desc">Virginia Association of State College & University Purchasing Professionals</div>
         </a>
-        <a href="https://vhepc.cobblestone.software" target="_blank" class="platform-button vhepc-button">
+        <a href="https://vhepc.cobblestone.software/public/" target="_blank" class="platform-button vhepc-button">
           <div class="platform-button-name">VHEPC</div>
           <div class="platform-button-desc">Virginia Higher Education Procurement Consortium</div>
         </a>
@@ -287,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <p>These platforms provide pre-competed contracts that can significantly reduce procurement time and effort.</p>
       `;
     } 
-    // Handle Exception to Competition selections
+    // Handle Exception to Competition selections (unless under 10k)
     else if (userSelections.exception !== 'none') {
       const exceptionValue = userSelections.exception;
       const isCappedExceptionOver200k = exceptionValue.match(/EC(2|3|4|5|6|8|9|10|11|12|13|14|15|17|18|19|20|21|23|24|25|26|39)/) && 
@@ -333,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function() {
         timeline = 'Timeline: Typically 5-15 business days after submitting the requisition and supporting documentation.';
       }
     }
-    // Standard procurement methods
+    // Standard procurement methods (for all other cases, not under 10k)
     else if (userSelections.emergency === 'yes') {
       procurementMethod = 'Emergency Procurement';
       description = 'Due to the emergency nature of this purchase, you should follow emergency procurement procedures. This involves direct sourcing with minimal competition requirements.';
@@ -345,26 +366,6 @@ document.addEventListener('DOMContentLoaded', function() {
       description = 'Since only one vendor can provide this item/service, a sole source justification should be prepared to document why competitive procurement is not possible.';
       additionalInfo = 'Submit a Sole Source Justification Form along with your requisition in RealSource. University Purchasing will review and approve if it qualifies.';
       timeline = 'Timeline: A minimum of 5-15 business days after submitting the requisition and justification, due to required market analysis and documentation.';
-    } 
-    else if (userSelections.value === 'under10k') {
-      procurementMethod = 'Delegated Authority Purchase';
-      description = 'For purchases under $10,000, departments have delegated authority to make purchases without involving University Purchasing.';
-      additionalInfo = `<strong>Approach One</strong><br>
-      1. Review vendor document(s) (SOW, quote, order form, contract) to ensure it reflects what you wish to purchase.<br>
-      2. Create a Requisition in RealSource and attach vendor document(s).<br>
-      3. Obtain Requisition approvals and issue a Purchase Order.<br>
-      4. <strong>Do NOT sign any vendor documents.</strong><br><br>
-      
-      <strong>Approach Two</strong><br>
-      If the vendor rejects the Purchase Order because a signature is required, submit vendor documents through the Contracts+ module in RealSource. The Contracts team will negotiate and finalize the contract.<br><br>
-      
-      <strong>Pcard Purchases</strong><br>
-      • Follow Pcard rules and thresholds.<br>
-      • If no signature is required, pay with Pcard.<br>
-      • If a signature is required, send documents through Contracts+ in RealSource.<br><br>
-      
-      For additional options, submit a contract request via Contracts+. See the Contracts+ Help Guide on the RealSource homepage under Quick Links.`;
-      timeline = 'Timeline: 1-5 business days if using a Purchase Order; potentially longer if signature/contract required.';
     } 
     else if (userSelections.value === '10kTo200k') {
       if (userSelections.specialized === 'yes') {
@@ -416,7 +417,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="platform-button-name">VASCUPP</div>
           <div class="platform-button-desc">Virginia Association of State College & University Purchasing Professionals</div>
         </a>
-        <a href="https://vhepc.cobblestone.software" target="_blank" class="platform-button vhepc-button">
+        <a href="https://vhepc.cobblestone.software/public/" target="_blank" class="platform-button vhepc-button">
           <div class="platform-button-name">VHEPC</div>
           <div class="platform-button-desc">Virginia Higher Education Procurement Consortium</div>
         </a>
