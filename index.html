@@ -10,11 +10,11 @@
   <style>
     /* Theme Colors */
     :root {
-      --primary: #F8B300; /* Gold */
+      --primary: #F8B300;
       --primary-hover: #D69A00;
-      --secondary: #111111; /* Black */
+      --secondary: #111111;
       --secondary-hover: #333333;
-      --accent: #5A5A5A; /* Gray */
+      --accent: #5A5A5A;
       --accent-hover: #888888;
       --muted: #f3f4f6;
       --muted-foreground: #6B7280;
@@ -25,26 +25,30 @@
       --card-foreground: #374151;
       --radius: 0.5rem;
       --ring: #E5E7EB;
-      --blue: #004B87; /* Blue for accents */
+      --blue: #004B87;
     }
 
+    /* Scope only the reset to #procurement-tool */
     #procurement-tool * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    #procurement-tool {
+    /* Apply base styles to body but allow override */
+    body {
       font-family: 'Inter', sans-serif;
       color: var(--foreground);
       background-color: #F9FAFB;
       line-height: 1.5;
-      contain: layout; /* Contain layout changes */
-      position: relative;
-      padding-bottom: 60px; /* Space for footer */
     }
 
-    /* Container styles */
+    #procurement-tool {
+      position: relative;
+      padding-bottom: 60px; /* Space for footer */
+      min-height: 100vh; /* Ensure content doesn’t collapse */
+    }
+
     #procurement-tool .container {
       width: 100%;
       max-width: 1024px;
@@ -52,7 +56,6 @@
       padding: 1.5rem 1rem;
     }
 
-    /* Typography */
     #procurement-tool h1 {
       font-size: 1.5rem;
       font-weight: 700;
@@ -82,7 +85,6 @@
       margin-bottom: 1rem;
     }
 
-    /* Card styles */
     #procurement-tool .card {
       background-color: var(--card);
       border-radius: var(--radius);
@@ -121,7 +123,6 @@
       gap: 0.75rem;
     }
 
-    /* Button styles */
     #procurement-tool .button {
       display: inline-flex;
       align-items: center;
@@ -143,23 +144,23 @@
     #procurement-tool .button-primary:hover {
       background-color: var(--primary-hover);
     }
-    
+
     #procurement-tool .button-secondary {
       background-color: #f8961d;
       color: #FFFFFF;
     }
-    
+
     #procurement-tool .button-secondary:hover {
       background-color: #e98611;
     }
-    
+
     #procurement-tool .icon-download:before {
       content: "\2193";
       font-weight: bold;
     }
 
     #procurement-tool .button-outline {
-      background植物-color: transparent;
+      background-color: transparent;
       border-color: var(--border);
       color: var(--foreground);
     }
@@ -169,7 +170,7 @@
       background-color: var(--muted);
     }
 
-    /* Form styles */
+    /* [Remaining styles scoped to #procurement-tool as needed] */
     #procurement-tool .form-group {
       margin-bottom: 1.5rem;
     }
@@ -204,7 +205,6 @@
       border-color: var(--primary);
     }
 
-    /* Radio and select styles */
     #procurement-tool .radio-group {
       display: flex;
       flex-direction: column;
@@ -266,7 +266,6 @@
       background: white;
     }
 
-    /* Result area */
     #procurement-tool .result-section {
       background-color: #f8f9fa;
       border-radius: var(--radius);
@@ -287,7 +286,6 @@
       border: 1px solid #DBEAFE;
     }
 
-    /* Icons */
     #procurement-tool .icon {
       width: 1rem;
       height: 1rem;
@@ -313,14 +311,12 @@
       background-repeat: no-repeat;
     }
 
-    /* Separator */
     #procurement-tool .separator {
       height: 1px;
       background-color: var(--border);
       margin: 1.5rem 0;
     }
 
-    /* Alert */
     #procurement-tool .alert {
       display: flex;
       padding: 1rem;
@@ -350,7 +346,6 @@
       color: var(--muted-foreground);
     }
 
-    /* Progress indicator */
     #procurement-tool .step-indicator {
       display: flex;
       margin-bottom: 2rem;
@@ -401,66 +396,26 @@
       font-weight: 500;
     }
 
-    /* Utility classes */
-    #procurement-tool .mb-4 {
-      margin-bottom: 1rem;
-    }
-
-    #procurement-tool .mt-2 {
-      margin-top: 0.5rem;
-    }
-
-    #procurement-tool .mb-3 {
-      margin-bottom: 0.75rem;
-    }
-
-    #procurement-tool .mr-2 {
-      margin-right: 0.5rem;
-    }
-
-    #procurement-tool .space-y-1 > * + * {
-      margin-top: 0.25rem;
-    }
-
-    #procurement-tool .flex {
-      display: flex;
-    }
-
-    #procurement-tool .items-center {
-      align-items: center;
-    }
-
-    #procurement-tool .text-sm {
-      font-size: 0.875rem;
-    }
-
-    #procurement-tool .text-lg {
-      font-size: 1.125rem;
-    }
-
-    #procurement-tool .font-medium {
-      font-weight: 500;
-    }
-
-    #procurement-tool .grid {
-      display: grid;
-    }
-
-    #procurement-tool .grid-cols-1 {
-      grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-
-    #procurement-tool .gap-4 {
-      gap: 1rem;
-    }
+    #procurement-tool .mb-4 { margin-bottom: 1rem; }
+    #procurement-tool .mt-2 { margin-top: 0.5rem; }
+    #procurement-tool .mb-3 { margin-bottom: 0.75rem; }
+    #procurement-tool .mr-2 { margin-right: 0.5rem; }
+    #procurement-tool .space-y-1 > * + * { margin-top: 0.25rem; }
+    #procurement-tool .flex { display: flex; }
+    #procurement-tool .items-center { align-items: center; }
+    #procurement-tool .text-sm { font-size: 0.875rem; }
+    #procurement-tool .text-lg { font-size: 1.125rem; }
+    #procurement-tool .font-medium { font-weight: 500; }
+    #procurement-tool .grid { display: grid; }
+    #procurement-tool .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+    #procurement-tool .gap-4 { gap: 1rem; }
 
     @media (min-width: 1024px) {
       #procurement-tool .lg\:grid-cols-2 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
-    
-    /* Platform buttons styles */
+
     #procurement-tool .platform-buttons {
       display: flex;
       flex-wrap: wrap;
@@ -500,33 +455,18 @@
       opacity: 0.9;
     }
 
-    #procurement-tool .vascupp-button {
-      background-color: #004B87;
-    }
+    #procurement-tool .vascupp-button { background-color: #004B87; }
+    #procurement-tool .vhepc-button { background-color: #6A5ACD; }
+    #procurement-tool .eva-button { background-color: #008080; }
+    #procurement-tool .vita-button { background-color: #8B4513; }
+    #procurement-tool .pavilion-button { background-color: #9370DB; }
 
-    #procurement-tool .vhepc-button {
-      background-color: #6A5ACD;
-    }
-
-    #procurement-tool .eva-button {
-      background-color: #008080;
-    }
-
-    #procurement-tool .vita-button {
-      background-color: #8B4513;
-    }
-
-    #procurement-tool .pavilion-button {
-      background-color: #9370DB;
-    }
-    
-    /* Collapsible sections */
     #procurement-tool .collapsible {
       cursor: pointer;
       position: relative;
       padding-right: 30px;
     }
-    
+
     #procurement-tool .collapsible::after {
       content: '+';
       position: absolute;
@@ -537,24 +477,24 @@
       font-weight: bold;
       transition: transform 0.3s ease;
     }
-    
+
     #procurement-tool .collapsible.active::after {
       content: '−';
       transform: translateY(-50%) rotate(0deg);
     }
-    
+
     #procurement-tool .collapsible-content {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease-out;
     }
-    
+
     #procurement-tool .collapsible-content.show {
       max-height: 500px;
       transition: max-height 0.5s ease-in;
     }
 
-    /* Example footer style (adjust as needed) */
+    /* Footer protection */
     #footerMain {
       position: fixed;
       bottom: 0;
@@ -570,13 +510,59 @@
 </head>
 <body>
 <div id="procurement-tool">
-  <!-- [Rest of your HTML content remains unchanged] -->
   <div class="container">
     <h1>Procurement Method Selection Guide</h1>
-    <!-- ... (all other HTML content as in your original) ... -->
+    <div class="step-indicator">
+      <div class="step active" id="stepIndicator1"><div class="step-number">1</div><div class="step-title">Start</div></div>
+      <div class="step" id="stepIndicator2"><div class="step-number">2</div><div class="step-title">Existing Contract</div></div>
+      <div class="step" id="stepIndicator3"><div class="step-number">3</div><div class="step-title">Criteria</div></div>
+      <div class="step" id="stepIndicator4"><div class="step-number">4</div><div class="step-title">Result</div></div>
+    </div>
+    <div id="step1" class="card">
+      <div class="card-header">
+        <div class="card-title">Determine the Right Procurement Method</div>
+        <div class="card-description">This guide will help you identify the appropriate procurement method based on your specific needs.</div>
+      </div>
+      <div class="card-content">
+        <p>Finding the right procurement method is crucial for ensuring compliance with regulations and obtaining the best value. This tool will guide you through the selection process based on your purchase details.</p>
+        <div class="alert">
+          <span class="alert-icon icon-alert-circle"></span>
+          <div>
+            <div class="alert-title">Important Note</div>
+            <div class="alert-description">This tool provides general guidance based on common procurement practices. Always consult with VCU Procurement Services for official guidance.</div>
+          </div>
+        </div>
+        <p>Let's get started by understanding the basics of your purchase:</p>
+        <div class="form-group">
+          <label class="form-label" for="purchaseType">What type of procurement are you planning?</label>
+          <select id="purchaseType" class="form-control">
+            <option value="" selected disabled>Select an option</option>
+            <option value="standardGoods">Standard Goods</option>
+            <option value="standardServices">Standard Services</option>
+            <option value="standardGoodsServices">Standard Goods and Services</option>
+            <option value="construction">Related to construction, renovations, or other facility related purchase</option>
+          </select>
+          <div class="form-helper">Select the category that best describes what you're purchasing.</div>
+        </div>
+        <div id="fmdMessage" class="alert alert-info" style="display: none; margin-top: 1rem;">
+          <span class="alert-icon icon-info-circle"></span>
+          <div>
+            <div class="alert-title">Construction and Facilities Related Purchases</div>
+            <div class="alert-description">
+              For construction, renovations, or other facility related purchases, please contact the Facilities Management Department (FMD).<br><br>
+              Visit their website at: <a href="https://fmd.vcu.edu/services/" target="_blank">https://fmd.vcu.edu/services/</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button id="startCancelButton" class="button button-outline">Cancel</button>
+        <button id="step1NextButton" class="button button-primary">Next</button>
+      </div>
+    </div>
+    <!-- [Rest of your step HTML remains unchanged; omitted for brevity] -->
   </div>
 </div>
-<!-- Example footer (replace with your actual footer) -->
 <div id="footerMain">
   <p>Footer Content Here</p>
 </div>
