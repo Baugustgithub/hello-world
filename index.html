@@ -29,13 +29,13 @@
     }
 
     * {
-      box-sizing: border-box;
+      #procurement-tool box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      #procurement-tool font-family: 'Inter', sans-serif;
       color: var(--foreground);
       background-color: #F9FAFB;
       line-height: 1.5;
@@ -43,7 +43,7 @@
 
     /* Container styles */
     .container {
-      width: 100%;
+      #procurement-tool width: 100%;
       max-width: 1024px;
       margin: 0 auto;
       padding: 1.5rem 1rem;
@@ -51,37 +51,37 @@
 
     /* Typography */
     h1 {
-      font-size: 1.5rem;
+      #procurement-tool font-size: 1.5rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
       color: var(--primary);
     }
 
     h2 {
-      font-size: 1.25rem;
+      #procurement-tool font-size: 1.25rem;
       font-weight: 600;
       margin-bottom: 1rem;
     }
 
     h3 {
-      font-size: 1.125rem;
+      #procurement-tool font-size: 1.125rem;
       font-weight: 500;
       margin-bottom: 0.75rem;
     }
 
     h4 {
-      font-size: 1rem;
+      #procurement-tool font-size: 1rem;
       font-weight: 500;
       margin-bottom: 0.5rem;
     }
 
     p {
-      margin-bottom: 1rem;
+      #procurement-tool margin-bottom: 1rem;
     }
 
     /* Card styles */
     .card {
-      background-color: var(--card);
+      #procurement-tool background-color: var(--card);
       border-radius: var(--radius);
       border: 1px solid var(--border);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -90,28 +90,28 @@
     }
 
     .card-header {
-      padding: 1.25rem 1.5rem;
+      #procurement-tool padding: 1.25rem 1.5rem;
       border-bottom: 1px solid var(--border);
     }
 
     .card-title {
-      font-size: 1.25rem;
+      #procurement-tool font-size: 1.25rem;
       font-weight: 600;
       color: var(--card-foreground);
     }
 
     .card-description {
-      font-size: 0.875rem;
+      #procurement-tool font-size: 0.875rem;
       color: var(--muted-foreground);
       margin-top: 0.25rem;
     }
 
     .card-content {
-      padding: 1.5rem;
+      #procurement-tool padding: 1.5rem;
     }
 
     .card-footer {
-      padding: 1.25rem 1.5rem;
+      #procurement-tool padding: 1.25rem 1.5rem;
       border-top: 1px solid var(--border);
       display: flex;
       justify-content: flex-end;
@@ -120,7 +120,7 @@
 
     /* Button styles */
     .button {
-      display: inline-flex;
+      #procurement-tool display: inline-flex;
       align-items: center;
       justify-content: center;
       border-radius: var(--radius);
@@ -133,59 +133,59 @@
     }
 
     .button-primary {
-      background-color: var(--primary);
+      #procurement-tool background-color: var(--primary);
       color: #FFFFFF;
     }
 
     .button-primary:hover {
-      background-color: var(--primary-hover);
+      #procurement-tool background-color: var(--primary-hover);
     }
     
     .button-secondary {
-      background-color: #f8961d;
+      #procurement-tool background-color: #f8961d;
       color: #FFFFFF;
     }
     
     .button-secondary:hover {
-      background-color: #e98611;
+      #procurement-tool background-color: #e98611;
     }
     
     .icon-download:before {
-      content: "\2193";
+      #procurement-tool content: "\2193";
       font-weight: bold;
     }
 
     .button-outline {
-      background-color: transparent;
+      #procurement-tool background-color: transparent;
       border-color: var(--border);
       color: var(--foreground);
     }
 
     .button-outline:hover {
-      border-color: var(--accent);
+      #procurement-tool border-color: var(--accent);
       background-color: var(--muted);
     }
 
     /* Form styles */
     .form-group {
-      margin-bottom: 1.5rem;
+      #procurement-tool margin-bottom: 1.5rem;
     }
 
     .form-label {
-      display: block;
+      #procurement-tool display: block;
       font-size: 0.875rem;
       font-weight: 500;
       margin-bottom: 0.5rem;
     }
 
     .form-helper {
-      font-size: 0.75rem;
+      #procurement-tool font-size: 0.75rem;
       color: var(--muted-foreground);
       margin-top: 0.25rem;
     }
 
     .form-control {
-      width: 100%;
+      #procurement-tool width: 100%;
       padding: 0.5rem;
       border-radius: var(--radius);
       border: 1px solid var(--border);
@@ -196,20 +196,20 @@
     }
 
     .form-control:focus {
-      outline: none;
+      #procurement-tool outline: none;
       box-shadow: 0 0 0 2px rgba(0, 75, 135, 0.2);
       border-color: var(--primary);
     }
 
     /* Radio and select styles */
     .radio-group {
-      display: flex;
+      #procurement-tool display: flex;
       flex-direction: column;
       gap: 0.5rem;
     }
 
     .radio-item {
-      display: flex;
+      #procurement-tool display: flex;
       align-items: center;
       position: relative;
       padding-left: 1.75rem;
@@ -217,7 +217,7 @@
     }
 
     .radio-item input {
-      position: absolute;
+      #procurement-tool position: absolute;
       opacity: 0;
       cursor: pointer;
       height: 0;
@@ -225,7 +225,7 @@
     }
 
     .radio-checkmark {
-      position: absolute;
+      #procurement-tool position: absolute;
       top: 0.25rem;
       left: 0;
       height: 1rem;
@@ -236,26 +236,26 @@
     }
 
     .radio-item:hover input ~ .radio-checkmark {
-      background-color: var(--muted);
+      #procurement-tool background-color: var(--muted);
     }
 
     .radio-item input:checked ~ .radio-checkmark {
-      background-color: var(--primary);
+      #procurement-tool background-color: var(--primary);
       border-color: var(--primary);
     }
 
     .radio-checkmark:after {
-      content: "";
+      #procurement-tool content: "";
       position: absolute;
       display: none;
     }
 
     .radio-item input:checked ~ .radio-checkmark:after {
-      display: block;
+      #procurement-tool display: block;
     }
 
     .radio-item .radio-checkmark:after {
-      top: 0.25rem;
+      #procurement-tool top: 0.25rem;
       left: 0.25rem;
       width: 0.5rem;
       height: 0.5rem;
@@ -265,14 +265,14 @@
 
     /* Result area */
     .result-section {
-      background-color: #f8f9fa;
+      #procurement-tool background-color: #f8f9fa;
       border-radius: var(--radius);
       padding: 1.5rem;
       margin-bottom: 1.5rem;
     }
 
     .badge {
-      display: inline-flex;
+      #procurement-tool display: inline-flex;
       align-items: center;
       border-radius: 9999px;
       font-size: 0.75rem;
@@ -286,40 +286,40 @@
 
     /* Icons */
     .icon {
-      width: 1rem;
+      #procurement-tool width: 1rem;
       height: 1rem;
       display: inline-block;
       vertical-align: middle;
     }
 
     .icon-arrow-right {
-      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>');
+      #procurement-tool background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>');
       background-size: contain;
       background-repeat: no-repeat;
     }
 
     .icon-alert-circle {
-      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>');
+      #procurement-tool background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>');
       background-size: contain;
       background-repeat: no-repeat;
     }
 
     .icon-check-circle {
-      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>');
+      #procurement-tool background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>');
       background-size: contain;
       background-repeat: no-repeat;
     }
 
     /* Separator */
     .separator {
-      height: 1px;
+      #procurement-tool height: 1px;
       background-color: var(--border);
       margin: 1.5rem 0;
     }
 
     /* Alert */
     .alert {
-      display: flex;
+      #procurement-tool display: flex;
       padding: 1rem;
       border-radius: var(--radius);
       border: 1px solid var(--border);
@@ -330,38 +330,38 @@
     }
 
     .alert-icon {
-      flex-shrink: 0;
+      #procurement-tool flex-shrink: 0;
       width: 1rem;
       height: 1rem;
       margin-top: 0.125rem;
     }
 
     .alert-title {
-      font-weight: 500;
+      #procurement-tool font-weight: 500;
       font-size: 0.875rem;
       margin-bottom: 0.25rem;
     }
 
     .alert-description {
-      font-size: 0.75rem;
+      #procurement-tool font-size: 0.75rem;
       color: var(--muted-foreground);
     }
 
     /* Progress indicator */
     .step-indicator {
-      display: flex;
+      #procurement-tool display: flex;
       margin-bottom: 2rem;
     }
 
     .step {
-      flex: 1;
+      #procurement-tool flex: 1;
       text-align: center;
       padding: 0.5rem;
       position: relative;
     }
 
     .step:not(:last-child)::after {
-      content: '';
+      #procurement-tool content: '';
       position: absolute;
       top: 1rem;
       right: 0;
@@ -372,7 +372,7 @@
     }
 
     .step-number {
-      display: inline-flex;
+      #procurement-tool display: inline-flex;
       align-items: center;
       justify-content: center;
       width: 2rem;
@@ -388,90 +388,91 @@
     }
 
     .step.active .step-number {
-      background-color: var(--primary);
+      #procurement-tool background-color: var(--primary);
       border-color: var(--primary);
       color: white;
     }
 
     .step-title {
-      font-size: 0.75rem;
+      #procurement-tool font-size: 0.75rem;
       font-weight: 500;
     }
 
     /* Utility classes */
     .mb-4 {
-      margin-bottom: 1rem;
+      #procurement-tool margin-bottom: 1rem;
     }
 
     .mt-2 {
-      margin-top: 0.5rem;
+      #procurement-tool margin-top: 0.5rem;
     }
 
     .mb-3 {
-      margin-bottom: 0.75rem;
+      #procurement-tool margin-bottom: 0.75rem;
     }
 
     .mr-2 {
-      margin-right: 0.5rem;
+      #procurement-tool margin-right: 0.5rem;
     }
 
     .space-y-1 > * + * {
-      margin-top: 0.25rem;
+      #procurement-tool margin-top: 0.25rem;
     }
 
     .flex {
-      display: flex;
+      #procurement-tool display: flex;
     }
 
     .items-center {
-      align-items: center;
+      #procurement-tool align-items: center;
     }
 
     .text-sm {
-      font-size: 0.875rem;
+      #procurement-tool font-size: 0.875rem;
     }
 
     .text-lg {
-      font-size: 1.125rem;
+      #procurement-tool font-size: 1.125rem;
     }
 
     .font-medium {
-      font-weight: 500;
+      #procurement-tool font-weight: 500;
     }
 
     .grid {
-      display: grid;
+      #procurement-tool display: grid;
     }
 
     .grid-cols-1 {
-      grid-template-columns: repeat(1, minmax(0, 1fr));
+      #procurement-tool grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 
     .gap-4 {
-      gap: 1rem;
+      #procurement-tool gap: 1rem;
     }
 
     @media (min-width: 1024px) {
       .lg\:grid-cols-2 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        #procurement-tool grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
     
     /* Platform buttons styles */
     .platform-buttons {
-      display: flex;
+      #procurement-tool display: flex;
       flex-wrap: wrap;
       gap: 12px;
       margin: 16px 0;
     }
 
     .platform-button {
-      display: flex;
+      #procurement-tool display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: 160px;
-      height: 100px;
+      width: 180px;
+      min-height: 100px;
+      height: auto;
       padding: 12px;
       border-radius: 8px;
       text-decoration: none;
@@ -483,49 +484,51 @@
     }
 
     .platform-button:hover {
-      transform: translateY(-3px);
+      #procurement-tool transform: translateY(-3px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .platform-button-name {
-      font-size: 1.1rem;
+      #procurement-tool font-size: 1.1rem;
       margin-bottom: 6px;
     }
 
     .platform-button-desc {
-      font-size: 0.75rem;
+      word-wrap: break-word;
+      text-align: center;
+      #procurement-tool font-size: 0.75rem;
       opacity: 0.9;
     }
 
     .vascupp-button {
-      background-color: #004B87;
+      #procurement-tool background-color: #004B87;
     }
 
     .vhepc-button {
-      background-color: #6A5ACD;
+      #procurement-tool background-color: #6A5ACD;
     }
 
     .eva-button {
-      background-color: #008080;
+      #procurement-tool background-color: #008080;
     }
 
     .vita-button {
-      background-color: #8B4513;
+      #procurement-tool background-color: #8B4513;
     }
 
     .pavilion-button {
-      background-color: #9370DB;
+      #procurement-tool background-color: #9370DB;
     }
     
     /* Collapsible sections */
     .collapsible {
-      cursor: pointer;
+      #procurement-tool cursor: pointer;
       position: relative;
       padding-right: 30px;
     }
     
     .collapsible::after {
-      content: '+';
+      #procurement-tool content: '+';
       position: absolute;
       right: 10px;
       top: 50%;
@@ -536,12 +539,12 @@
     }
     
     .collapsible.active::after {
-      content: '−';
+      #procurement-tool content: '−';
       transform: translateY(-50%) rotate(0deg);
     }
     
     .collapsible-content {
-      max-height: 0;
+      #procurement-tool max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease-out;
     }
@@ -553,6 +556,8 @@
   </style>
 </head>
 <body>
+<div id="procurement-tool">
+
   <div class="container">
     <h1>Procurement Method Selection Guide</h1>
 
@@ -1037,5 +1042,7 @@
   <!-- Include VCU logo for PDF generation -->
   <script src="logo.js"></script>
   <script src="script.js"></script>
+
+</div>
 </body>
 </html>
