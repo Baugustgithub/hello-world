@@ -8,12 +8,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    /* Theme Colors */
     :root {
-      --primary: #F8B300;
+      --primary: #F8B300; /* Gold */
       --primary-hover: #D69A00;
-      --secondary: #111111;
+      --secondary: #111111; /* Black */
       --secondary-hover: #333333;
-      --accent: #5A5A5A;
+      --accent: #5A5A5A; /* Gray */
       --accent-hover: #888888;
       --muted: #f3f4f6;
       --muted-foreground: #6B7280;
@@ -24,10 +25,10 @@
       --card-foreground: #374151;
       --radius: 0.5rem;
       --ring: #E5E7EB;
-      --blue: #004B87;
+      --blue: #004B87; /* Blue for accents */
     }
 
-    #procurement-tool * {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -36,98 +37,155 @@
     body {
       font-family: 'Inter', sans-serif;
       color: var(--foreground);
-      background-color: #F9FAFB;
       line-height: 1.5;
-      margin: 0; /* Ensure no default margin interferes */
     }
 
-    #procurement-tool {
-      position: relative;
-      padding-bottom: 80px; /* Increased to ensure buttons clear footer */
-      min-height: 100vh;
-    }
-
-    #procurement-tool .container {
+    /* Container styles */
+    .container {
       width: 100%;
       max-width: 1024px;
       margin: 0 auto;
       padding: 1.5rem 1rem;
     }
 
-    #procurement-tool h1 {
+    /* Typography */
+    h1 {
       font-size: 1.5rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
-      color: var(--primary);
     }
 
-    #procurement-tool .card {
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.125rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+/*
+    h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+*/
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    /* Card styles */
+    .card {
       background-color: var(--card);
       border-radius: var(--radius);
       border: 1px solid var(--border);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       margin-bottom: 1.5rem;
-      position: relative; /* Ensure buttons stay in flow */
     }
 
-    #procurement-tool .card-footer {
+    .card-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--card-foreground);
+    }
+
+    .card-description {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      margin-top: 0.25rem;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card-footer {
       padding: 1.25rem 1.5rem;
       border-top: 1px solid var(--border);
       display: flex;
       justify-content: flex-end;
       gap: 0.75rem;
-      position: relative;
-      z-index: 10; /* Ensure buttons are above other content */
     }
 
-    #procurement-tool .button {
+    /* Button styles */
+    .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       border-radius: var(--radius);
-      font-size: 0.875rem;
+      font-size: 0.775rem;
       font-weight: 500;
       padding: 0.5rem 1rem;
       transition: all 0.2s ease-in-out;
       cursor: pointer;
       border: 1px solid transparent;
-      position: relative; /* Ensure clickable area */
-      z-index: 10; /* Above potential overlaps */
     }
 
-    #procurement-tool .button-primary {
+    .button-primary {
       background-color: var(--primary);
       color: #FFFFFF;
     }
 
-    #procurement-tool .button-primary:hover {
+    .button-primary:hover {
       background-color: var(--primary-hover);
     }
+    
+    .button-secondary {
+      background-color: #f8961d;
+      color: #FFFFFF;
+    }
+    
+    .button-secondary:hover {
+      background-color: #e98611;
+    }
+    
+    .icon-download:before {
+      content: "\2193";
+      font-weight: bold;
+    }
 
-    #procurement-tool .button-outline {
+    .button-outline {
       background-color: transparent;
       border-color: var(--border);
       color: var(--foreground);
     }
 
-    #procurement-tool .button-outline:hover {
+    .button-outline:hover {
       border-color: var(--accent);
       background-color: var(--muted);
     }
 
-    #procurement-tool .form-group {
+    /* Form styles */
+    .form-group {
       margin-bottom: 1.5rem;
     }
 
-    #procurement-tool .form-label {
+    .form-label {
       display: block;
       font-size: 0.875rem;
       font-weight: 500;
       margin-bottom: 0.5rem;
     }
 
-    #procurement-tool .form-control {
+    .form-helper {
+      font-size: 0.75rem;
+      /* color: var(--muted-foreground); */
+      color: #184a7c;
+      margin-top: 0.25rem;
+    }
+
+    .form-control {
       width: 100%;
       padding: 0.5rem;
       border-radius: var(--radius);
@@ -135,21 +193,176 @@
       background-color: var(--background);
       font-size: 0.875rem;
       color: var(--foreground);
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
 
-    #procurement-tool .step-indicator {
+    .form-control:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 75, 135, 0.2);
+      border-color: var(--primary);
+    }
+
+    /* Radio and select styles */
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .radio-item {
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-left: 1.75rem;
+      cursor: pointer;
+    }
+
+    .radio-item input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    .radio-checkmark {
+      position: absolute;
+      top: 0.25rem;
+      left: 0;
+      height: 1rem;
+      width: 1rem;
+      background-color: white;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+    }
+
+    .radio-item:hover input ~ .radio-checkmark {
+      background-color: var(--muted);
+    }
+
+    .radio-item input:checked ~ .radio-checkmark {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .radio-checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    .radio-item input:checked ~ .radio-checkmark:after {
+      display: block;
+    }
+
+    .radio-item .radio-checkmark:after {
+      top: 0.25rem;
+      left: 0.25rem;
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: white;
+    }
+
+    /* Result area */
+    .result-section {
+      background-color: #f8f9fa;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      line-height: 1;
+      padding: 0.25rem 0.75rem;
+      background-color: #EFF6FF;
+      color: #1E40AF;
+      border: 1px solid #DBEAFE;
+    }
+
+    /* Icons */
+    .icon {
+      width: 1rem;
+      height: 1rem;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .icon-arrow-right {
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .icon-alert-circle {
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .icon-check-circle {
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    /* Separator */
+    .separator {
+      height: 1px;
+      background-color: var(--border);
+      margin: 1.5rem 0;
+    }
+
+    /* Alert */
+    .alert {
+      display: flex;
+      padding: 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      margin-bottom: 1rem;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background-color: #F9FAFB;
+    }
+
+    .alert-icon {
+      flex-shrink: 0;
+      width: 1rem;
+      height: 1rem;
+      margin-top: 0.125rem;
+    }
+
+    .alert-title {
+      font-weight: 500;
+      font-size: 0.875rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .alert-description {
+      font-size: 0.75rem;
+      /* color: var(--muted-foreground); */
+      color : #184a7c;
+    }
+
+    /* Progress indicator */
+    .step-indicator {
       display: flex;
       margin-bottom: 2rem;
     }
 
-    #procurement-tool .step {
+    .step {
       flex: 1;
       text-align: center;
       padding: 0.5rem;
       position: relative;
     }
 
-    #procurement-tool .step:not(:last-child)::after {
+    .step:not(:last-child)::after {
       content: '';
       position: absolute;
       top: 1rem;
@@ -160,7 +373,7 @@
       z-index: 0;
     }
 
-    #procurement-tool .step-number {
+    .step-number {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -176,42 +389,217 @@
       margin-bottom: 0.5rem;
     }
 
-    #procurement-tool .step.active .step-number {
+    .step.active .step-number {
       background-color: var(--primary);
       border-color: var(--primary);
       color: white;
     }
 
-    #procurement-tool .step-title {
+    .step-title {
       font-size: 0.75rem;
       font-weight: 500;
     }
 
-    #footerMain {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      z-index: 5; /* Lower than buttons to avoid overlap */
-      background-color: #333;
-      color: white;
-      padding: 1rem;
+    /* Utility classes */
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+
+    .mt-2 {
+      margin-top: 0.5rem;
+    }
+
+    .mb-3 {
+      margin-bottom: 0.75rem;
+    }
+
+    .mr-2 {
+      margin-right: 0.5rem;
+    }
+
+    .space-y-1 > * + * {
+      margin-top: 0.25rem;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .text-sm {
+      font-size: 0.875rem;
+    }
+
+    .text-lg {
+      font-size: 1.125rem;
+    }
+
+    .font-medium {
+      font-weight: 500;
+    }
+
+    .grid {
+      display: grid;
+    }
+
+    .grid-cols-1 {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .gap-4 {
+      gap: 1rem;
+    }
+
+    @media (min-width: 1024px) {
+      .lg\:grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    
+    /* Platform buttons styles */
+    .platform-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .platform-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 160px;
+      height: 150px;
+      padding: 12px;
+      border-radius: 8px;
+      text-decoration: none;
       text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      color: white !important;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .platform-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .platform-button-name {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .platform-button-desc {
+      font-size: 0.75rem;
+      opacity: 0.9;
+    }
+
+    .vascupp-button {
+      background-color: #091f2f;
+    }
+
+    .vhepc-button {
+      background-color: #001430;
+    }
+
+    .eva-button {
+      background-color: #008080;
+    }
+
+    .vita-button {
+      background-color: #8cd4a8;
+    }
+
+    .pavilion-button {
+      background-color: #3831eb;
+    }
+    
+    /* Collapsible sections */
+    .collapsible {
+      cursor: pointer;
+      position: relative;
+      padding-right: 30px;
+    }
+    
+    .collapsible::after {
+      content: '+';
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+    
+    .collapsible.active::after {
+      content: '−';
+      transform: translateY(-50%) rotate(0deg);
+    }
+    
+    .collapsible-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    
+    .collapsible-content.show {
+      max-height: 500px;
+      transition: max-height 0.5s ease-in;
     }
   </style>
 </head>
 <body>
-<div id="procurement-tool">
   <div class="container">
-    <h1>Procurement Method Selection Guide</h1>
     <div class="step-indicator">
-      <div class="step active" id="stepIndicator1"><div class="step-number">1</div><div class="step-title">Start</div></div>
-      <div class="step" id="stepIndicator2"><div class="step-number">2</div><div class="step-title">Existing Contract</div></div>
-      <div class="step" id="stepIndicator3"><div class="step-number">3</div><div class="step-title">Criteria</div></div>
-      <div class="step" id="stepIndicator4"><div class="step-number">4</div><div class="step-title">Result</div></div>
+      <div class="step active" id="stepIndicator1">
+        <div class="step-number">1</div>
+        <div class="step-title">Start</div>
+      </div>
+      <div class="step" id="stepIndicator2">
+        <div class="step-number">2</div>
+        <div class="step-title">Existing Contract</div>
+      </div>
+      <div class="step" id="stepIndicator3">
+        <div class="step-number">3</div>
+        <div class="step-title">Criteria</div>
+      </div>
+      <div class="step" id="stepIndicator4">
+        <div class="step-number">4</div>
+        <div class="step-title">Result</div>
+      </div>
     </div>
+
+    <!-- Step 1: Introduction -->
     <div id="step1" class="card">
+      <div class="card-header">
+        <div class="card-title">Determine the Right Procurement Method</div>
+        <div class="card-description">
+          This guide will help you identify the appropriate procurement method based on your specific needs.
+        </div>
+      </div>
       <div class="card-content">
+        <p>
+          Finding the right procurement method is crucial for ensuring compliance with regulations and obtaining the best value. This tool will guide you through the selection process based on your purchase details.
+        </p>
+
+        <div class="alert">
+          <span class="alert-icon icon-alert-circle"></span>
+          <div>
+            <div class="alert-title">Important Note</div>
+            <div class="alert-description">
+              This tool provides general guidance based on common procurement practices. Always consult with VCU Procurement Services for official guidance.
+            </div>
+          </div>
+        </div>
+
+        <p>Let's get started by understanding the basics of your purchase:</p>
+
         <div class="form-group">
           <label class="form-label" for="purchaseType">What type of procurement are you planning?</label>
           <select id="purchaseType" class="form-control">
@@ -219,52 +607,435 @@
             <option value="standardGoods">Standard Goods</option>
             <option value="standardServices">Standard Services</option>
             <option value="standardGoodsServices">Standard Goods and Services</option>
-            <option value="construction">Related to construction</option>
+            <option value="construction">Related to construction, renovations, or other facility related purchase</option>
           </select>
+          <div class="form-helper">
+            Select the category that best describes what you're purchasing.
+          </div>
         </div>
-        <div id="fmdMessage" style="display: none;">Contact Facilities Management for construction.</div>
+        
+        <!-- FMD message will be displayed here when construction is selected -->
+        <div id="fmdMessage" class="alert alert-info" style="display: none; margin-top: 1rem;">
+          <span class="alert-icon icon-info-circle"></span>
+          <div>
+            <div class="alert-title">Construction and Facilities Related Purchases</div>
+            <div class="alert-description">
+              For construction, renovations, or other facility related purchases, please contact the Facilities Management Department (FMD). 
+              <br><br>
+              Visit their website at: <a href="https://fmd.vcu.edu/services/" target="_blank">https://fmd.vcu.edu/services/</a>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="card-footer">
         <button id="startCancelButton" class="button button-outline">Cancel</button>
         <button id="step1NextButton" class="button button-primary">Next</button>
       </div>
     </div>
+
+    <!-- Step 2: Existing Contracts -->
     <div id="step2" class="card" style="display: none;">
+      <div class="card-header">
+        <div class="card-title">Check for Existing Contracts</div>
+        <div class="card-description">
+          Determine if there's an existing contract or agreement that you can use.
+        </div>
+      </div>
       <div class="card-content">
-        <p>Step 2 content here</p>
+        <p>
+          Before selecting a procurement method, check if there's an existing contract or agreement that covers your needs. Using an existing contract can save time and resources.
+        </p>
+        
+        <div class="form-group">
+          <label class="form-label">Check these resources for existing contracts:</label>
+          <div class="platform-buttons">
+            <a href="https://vascupp.org" target="_blank" class="platform-button vascupp-button">
+              <div class="platform-button-name">VASCUPP</div>
+              <div class="platform-button-desc">Virginia Association of State College & University Purchasing Professionals</div>
+            </a>
+            <a href="https://vhepc.cobblestone.software/public/" target="_blank" class="platform-button vhepc-button">
+              <div class="platform-button-name">VHEPC</div>
+              <div class="platform-button-desc">Virginia Higher Education Procurement Consortium</div>
+            </a>
+            <a href="https://eva.virginia.gov" target="_blank" class="platform-button eva-button">
+              <div class="platform-button-name">eVA</div>
+              <div class="platform-button-desc">Virginia's eProcurement Portal</div>
+            </a>
+            <a href="https://vita.cobblestonesystems.com/public/" target="_blank" class="platform-button vita-button">
+              <div class="platform-button-name">VITA</div>
+              <div class="platform-button-desc">Virginia Information Technologies Agency Contracts</div>
+            </a>
+            <a href="https://www.withpavilion.com/welcome" target="_blank" class="platform-button pavilion-button">
+              <div class="platform-button-name">Pavilion</div>
+              <div class="platform-button-desc">Cooperative Purchasing Platform</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Is there an existing contract that meets your requirements?</label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="existingContract" value="yes">
+              <span class="radio-checkmark"></span>
+              Yes, there is an existing contract
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="existingContract" value="no">
+              <span class="radio-checkmark"></span>
+              No, there is no existing contract
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="existingContract" value="notSure">
+              <span class="radio-checkmark"></span>
+              I'm not sure
+            </label>
+          </div>
+        </div>
+
+        <div id="existingContractInfo" style="display: none;">
+          <div class="alert">
+            <span class="alert-icon icon-check-circle"></span>
+            <div>
+              <div class="alert-title">Use the Existing Contract</div>
+              <div class="alert-description">
+                When an existing contract meets your requirements, you should use it as your primary option. Contact your procurement team for assistance with the order process. You can still proceed to explore alternative options if needed.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="notSureInfo" style="display: none;">
+          <div class="alert">
+            <span class="alert-icon icon-alert-circle"></span>
+            <div>
+              <div class="alert-title">Check for Cooperative Procurement Options</div>
+              <div class="alert-description">
+                Contact University Purchasing to determine if there's an existing contract, cooperative procurement agreement, or other arrangement that meets your needs. Using these options can save significant time in the procurement process.
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-helper">
+          Note: Even if you select "Yes" or "Not Sure", you can still proceed to the next step to explore all available procurement options.
+        </div>
       </div>
       <div class="card-footer">
         <button id="step2BackButton" class="button button-outline">Back</button>
         <button id="step2NextButton" class="button button-primary">Next</button>
       </div>
     </div>
+
+    <!-- Step 3: Procurement Criteria -->
     <div id="step3" class="card" style="display: none;">
+      <div class="card-header">
+        <div class="card-title">Procurement Criteria</div>
+        <div class="card-description">
+          Answer a few questions to determine the appropriate procurement method.
+        </div>
+      </div>
       <div class="card-content">
-        <p>Step 3 content here</p>
+        <div class="form-group">
+          <label class="form-label">What is the estimated value of the procurement?</label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="value" value="under10k">
+              <span class="radio-checkmark"></span>
+              Under $10,000 (Delegated Authority)
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="value" value="10kTo200k">
+              <span class="radio-checkmark"></span>
+              $10,000 to $200,000 (Small Purchase)
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="value" value="200kTo2m">
+              <span class="radio-checkmark"></span>
+              $200,000 to $2 million (Formal Process)
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="value" value="2mTo5m">
+              <span class="radio-checkmark"></span>
+              $2 million to $5 million (Higher Level Signer Required)
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="value" value="over5m">
+              <span class="radio-checkmark"></span>
+              Over $5 million (BOV Approval & Higher Level Signer Required)
+            </label>
+          </div>
+          <div class="form-helper">
+            Consider the Total Contract Value (TCV) - including initial contract period, optional renewals, and potential total spend.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Are the requirements complex, specialized, or unique item/service?</label>
+          <div class="alert" style="margin-bottom: 1rem;">
+            <span class="alert-icon icon-info-circle"></span>
+            <div>
+              <div class="alert-title collapsible">What makes something "complex or specialized"?</div>
+              <div class="alert-description collapsible-content">
+                Complex or specialized purchases typically include:
+                <ul class="text-sm bullets" style="margin-top: 0.5rem;">
+                  <li>Items requiring significant customization or configuration</li>
+                  <li>Services requiring specialized expertise, certifications, or unique qualifications</li>
+                  <li>Procurements where factors beyond price (quality, implementation approach, experience) are critical</li>
+                  <li>Solutions where technical approach or methodology significantly impacts outcomes</li>
+                </ul>
+                Standard items/services are those with clear, widely-accepted specifications that can be accurately compared primarily on price.
+              </div>
+            </div>
+          </div>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="specialized" value="yes">
+              <span class="radio-checkmark"></span>
+              Yes, it's complex, specialized, or unique
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="specialized" value="no">
+              <span class="radio-checkmark"></span>
+              No, it's a standard item/service
+            </label>
+          </div>
+          <div class="form-helper">
+            Note: This classification affects which procurement method is recommended. Complex/specialized purchases typically use methods that evaluate quality and approach, not just price.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Is there a single source that can provide this item/service?</label>
+          <div class="alert" style="margin-bottom: 1rem;">
+            <span class="alert-icon icon-info-circle"></span>
+            <div>
+              <div class="alert-title collapsible">What qualifies as a "single source" procurement?</div>
+              <div class="alert-description collapsible-content">
+                A true single/sole source situation exists when:
+                <ul class="text-sm bullets" style="margin-top: 0.5rem;">
+                  <li>Only one vendor can provide the exact item or service needed</li>
+                  <li>The item is only available from the original equipment manufacturer (OEM)</li>
+                  <li>Required compatibility with existing systems can only be met by one vendor</li>
+                  <li>Proprietary technology or unique expertise is only available from one source</li>
+                </ul>
+                <strong>Preferences for a specific vendor, prior relationships, or convenience are not valid justifications for single source procurement.</strong>
+              </div>
+            </div>
+          </div>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="singleSource" value="yes">
+              <span class="radio-checkmark"></span>
+              Yes, only one vendor can provide this
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="singleSource" value="no">
+              <span class="radio-checkmark"></span>
+              No, multiple vendors can provide this
+            </label>
+          </div>
+          <div class="form-helper">
+            Note: Single source claims require detailed written justification and market research documentation to be approved by Procurement Services.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Is this an emergency procurement?</label>
+          <div class="alert" style="margin-bottom: 1rem;">
+            <span class="alert-icon icon-alert-circle"></span>
+            <div>
+              <div class="alert-title collapsible">What qualifies as an emergency?</div>
+              <div class="alert-description collapsible-content">
+                An emergency is a situation that creates an immediate threat to public health, welfare, safety, or public property, such as:
+                <ul class="text-sm bullets" style="margin-top: 0.5rem;">
+                  <li>Natural disasters or events causing immediate safety hazards</li>
+                  <li>Serious equipment failures affecting critical operations</li>
+                  <li>Situations that would result in significant financial loss to the university</li>
+                  <li>Circumstances where there is insufficient time to use normal procurement methods</li>
+                </ul>
+                <strong>Tight deadlines, poor planning, or administrative convenience do not constitute emergencies.</strong>
+              </div>
+            </div>
+          </div>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="emergency" value="yes">
+              <span class="radio-checkmark"></span>
+              Yes, it's a true emergency (as defined above)
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="emergency" value="no">
+              <span class="radio-checkmark"></span>
+              No, it's not an emergency
+            </label>
+          </div>
+          <div class="form-helper">
+            Note: Emergency procurements must be documented and justified to Procurement Services. They are subject to review and may be rejected if they don't meet emergency criteria.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Is the vendor certified by Virginia's Department of Small Business and Supplier Diversity (SBSD)?</label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="sbsdCertified" value="yes">
+              <span class="radio-checkmark"></span>
+              Yes, this vendor is SBSD certified
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="sbsdCertified" value="no">
+              <span class="radio-checkmark"></span>
+              No, this vendor is not SBSD certified or I don't know
+            </label>
+          </div>
+          <div class="form-helper collapsible">
+            Click for more information about SBSD certification
+          </div>
+          <div class="collapsible-content">
+            <p>The Small Business and Supplier Diversity (SBSD) certification means a business has been certified by the Commonwealth of Virginia as a small, women-owned, or minority-owned business. This may qualify the vendor for special procurement options under certain circumstances.</p>
+            <p>You can verify a vendor's SBSD certification status on the <a href="https://directory.sbsd.virginia.gov/" target="_blank">SBSD Vendor Directory</a>.</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="exception">Does this procurement qualify for an Exception to Competition (EC)?</label>
+          <select id="exception" class="form-control">
+            <option value="none" selected>No Exception Applies</option>
+            <optgroup label="Arts, Events, and Media (Capped at $200k)">
+              <option value="EC2">Game Officials (Referees, umpires for athletic events)</option>
+              <option value="EC3">TV/Radio (Programs for athletic events, conferences)</option>
+              <option value="EC4">Performing Arts/Media Services (Musicians, designers, etc.)</option>
+              <option value="EC5">Arts/Exhibitions (Rental fees for exhibitions)</option>
+              <option value="EC24">Advertisements (Newspapers, magazines, radio, TV, etc.)</option>
+            </optgroup>
+            <optgroup label="Arts, Events, and Media (Unlimited)">
+              <option value="EC31">Speakers/Performing Artists</option>
+            </optgroup>
+            <optgroup label="Education and Research (Capped at $200k)">
+              <option value="EC6">Books/Subscriptions (Print or electronic)</option>
+              <option value="EC8">Registration Fees (Conference, seminar, training)</option>
+              <option value="EC9">Academic/Research Consulting</option>
+              <option value="EC18">Academic Testing</option>
+              <option value="EC19">Accreditation Fees</option>
+              <option value="EC20">Equipment Testing or Evaluation</option>
+              <option value="EC21">Training Sessions & Workshops</option>
+            </optgroup>
+            <optgroup label="Education and Research (Unlimited)">
+              <option value="EC16">Educational Institutions (Public/private, non-profit)</option>
+            </optgroup>
+            <optgroup label="Travel and Conferences">
+              <option value="EC23">International Purchases (Capped at $200k)</option>
+              <option value="EC34">Foreign Group Travel (Unlimited)</option>
+              <option value="EC35">Conference Facilities & Services (Unlimited)</option>
+              <option value="EC36">Athletic Events Participation (Unlimited)</option>
+            </optgroup>
+            <optgroup label="Equipment and Maintenance">
+              <option value="EC12">Maintenance & Repair (High-cost equipment) (Capped at $200k)</option>
+              <option value="EC28">Used Equipment (Unlimited)</option>
+            </optgroup>
+            <optgroup label="Health and Professional Services">
+              <option value="EC13">Transplants & Implants (Capped at $200k)</option>
+              <option value="EC14">Medical/Health Services (Capped at $200k)</option>
+              <option value="EC25">Facilitators/Mediators (Capped at $200k)</option>
+              <option value="EC39">Pharmacies/Medical Residencies (Capped at $200k)</option>
+              <option value="EC38">Legal Services (Unlimited)</option>
+            </optgroup>
+            <optgroup label="Technology and Utilities">
+              <option value="EC17">Specialized Software Licenses (Capped at $200k)</option>
+              <option value="EC27">Utilities (Electricity, natural gas, etc.) (Unlimited)</option>
+            </optgroup>
+            <optgroup label="Other Exceptions">
+              <option value="EC10">Sponsorships (Capped at $200k)</option>
+              <option value="EC11">Honoraria (Capped at $200k)</option>
+              <option value="EC15">Pass-Through Procurements (Capped at $200k)</option>
+              <option value="EC26">Real Estate Leases (Capped at $200k)</option>
+              <option value="EC29">Government-to-Government Purchases (Unlimited)</option>
+              <option value="EC30">Special Sector Purchases (Unlimited)</option>
+              <option value="EC32">Memberships and Association Dues (Unlimited)</option>
+              <option value="EC33">Grant Sub-Awards (Unlimited)</option>
+              <option value="EC37">Royalties (Unlimited)</option>
+            </optgroup>
+          </select>
+          <div class="form-helper">
+            Select an exception if applicable. Note that some exceptions are capped at $200,000. If your TCV exceeds this cap and the exception is capped, normal procurement rules will apply.
+          </div>
+        </div>
       </div>
       <div class="card-footer">
         <button id="step3BackButton" class="button button-outline">Back</button>
         <button id="step3NextButton" class="button button-primary">Next</button>
       </div>
     </div>
+
+    <!-- Step 4: Result -->
     <div id="step4" class="card" style="display: none;">
+      <div class="card-header">
+        <div class="card-title">Suggested Procurement Method</div>
+        <div class="card-description">
+          Based on your answers, here's a suggested procurement method. Please note that Procurement Services will ultimately determine the appropriate method for your specific situation.
+        </div>
+      </div>
       <div class="card-content">
-        <div id="resultDisplay"></div>
+        <div class="alert alert-info mb-4">
+          <span class="alert-icon icon-info-circle"></span>
+          <div>
+            <div class="alert-title">Important Disclaimer</div>
+            <div class="alert-description">
+              This tool provides guidance only. Procurement Services has the ultimate authority to determine the appropriate procurement method based on a comprehensive review of your specific requirements and applicable policies.
+            </div>
+          </div>
+        </div>
+        
+        <div id="resultDisplay" class="result-section">
+          <!-- Results will be displayed here -->
+        </div>
+
+        <h3>Procurement Process Overview</h3>
+        <p>
+          Follow these general steps to complete your procurement:
+        </p>
+        <ol class="bullets">
+          <li>Prepare a detailed specification of your requirements</li>
+          <li>Obtain necessary approvals and funding confirmation</li>
+          <li>Contact your procurement team to initiate the process</li>
+          <li>Develop evaluation criteria if applicable</li>
+          <li>Work with Procurement Services to finalize the appropriate method</li>
+          <li>Document the procurement process and decisions</li>
+        </ol>
+
+        <div class="separator"></div>
+
+        <div class="alert">
+          <span class="alert-icon icon-alert-circle"></span>
+          <div>
+            <div class="alert-title">Need Assistance?</div>
+            <div class="alert-description">
+              For assistance with your procurement, you can:
+              <ul class="text-sm bullets" style="margin-top: 0.5rem;">
+                <li>Place a service ticket: <a href="https://vcu-amc.ivanticloud.com/Default.aspx?Scope=ObjectWorkspace&CommandId=Search&ObjectType=ServiceReq%23#1729080190081" target="_blank">VCU Procurement Service Tickets</a></li>
+                <li>Email VCU Purchasing: <a href="mailto:purchasing@vcu.edu">purchasing@vcu.edu</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="card-footer">
         <button id="step4BackButton" class="button button-outline">Back</button>
-        <button id="resetButton" class="button button-outline">Reset</button>
-        <button id="downloadResultButton" class="button button-primary">Download</button>
+        <button id="downloadResultButton" class="button button-secondary">
+          <span class="icon-download" style="margin-right: 5px;"></span> Download Results
+        </button>
+        <button id="resetButton" class="button button-primary">Start Over</button>
       </div>
     </div>
   </div>
-</div>
-<div id="footerMain">
-  <p>Footer Content Here</p>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
-<script src="logo.js"></script>
-<script src="script.js"></script>
+
+  <!-- Include jsPDF library for PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- Optional: Include the autotable plugin for better tables in PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+  <!-- Include VCU logo for PDF generation -->
+  <script src="logo.js"></script>
+  <t4 type="media" formatter="javascript/*" id="808571" />
 </body>
 </html>
