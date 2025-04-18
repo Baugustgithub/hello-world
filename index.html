@@ -7,117 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #F9FAFB;
-      color: #374151;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 1024px;
-      margin: auto;
-      padding: 2rem 1rem;
-    }
-    h1 {
-      font-size: 1.75rem;
-      color: #F8B300;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-    .card {
-      background: #fff;
-      border: 1px solid #E5E7EB;
-      border-radius: 0.5rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    }
-    .card-header, .card-content, .card-footer {
-      padding: 1.25rem 1.5rem;
-    }
-    .card-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-    .form-group {
-      margin-bottom: 1rem;
-    }
-    .form-label {
-      display: block;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-    }
-    .form-control, select {
-      width: 100%;
-      padding: 0.5rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 0.375rem;
-    }
-    .form-helper {
-      font-size: 0.875rem;
-      color: #6B7280;
-      margin-top: 0.25rem;
-    }
-    .button {
-      padding: 0.5rem 1rem;
-      border-radius: 0.375rem;
-      font-weight: 600;
-      font-size: 0.875rem;
-      cursor: pointer;
-      border: none;
-    }
-    .button-primary {
-      background-color: #F8B300;
-      color: white;
-    }
-    .button-outline {
-      background: none;
-      border: 1px solid #ccc;
-      color: #374151;
-    }
-    .alert {
-      padding: 1rem;
-      border-radius: 0.375rem;
-      border: 1px solid #ccc;
-      background-color: #F9FAFB;
-      margin-bottom: 1rem;
-    }
-    .step-indicator {
-      display: flex;
-      margin-bottom: 2rem;
-    }
-    .step {
-      flex: 1;
-      text-align: center;
-    }
-    .step-number {
-      width: 2rem;
-      height: 2rem;
-      border-radius: 50%;
-      margin: auto;
-      background: #E5E7EB;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-    .step.active .step-number {
-      background-color: #F8B300;
-      color: white;
-    }
-    .badge {
-      background-color: #EFF6FF;
-      color: #1E40AF;
-      padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      display: inline-block;
-      margin-top: 1rem;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
@@ -141,12 +31,31 @@
         <div class="step-title">Result</div>
       </div>
     </div>
-    <!-- Step 1 -->
+    <!-- Step 1: Introduction -->
     <div id="step1" class="card">
       <div class="card-header">
         <div class="card-title">Determine the Right Procurement Method</div>
+        <div class="card-description">
+          This guide will help you identify the appropriate procurement method based on your specific needs.
+        </div>
       </div>
       <div class="card-content">
+        <p>
+          Finding the right procurement method is crucial for ensuring compliance with regulations and obtaining the best value. This tool will guide you through the selection process based on your purchase details.
+        </p>
+
+        <div class="alert">
+          <span class="alert-icon icon-alert-circle"></span>
+          <div>
+            <div class="alert-title">Important Note</div>
+            <div class="alert-description">
+              This tool provides general guidance based on common procurement practices. Always consult with VCU Procurement Services for official guidance.
+            </div>
+          </div>
+        </div>
+
+        <p>Let's get started by understanding the basics of your purchase:</p>
+
         <div class="form-group">
           <label class="form-label" for="purchaseType">What type of procurement are you planning?</label>
           <select id="purchaseType" class="form-control">
@@ -156,10 +65,22 @@
             <option value="standardGoodsServices">Standard Goods and Services</option>
             <option value="construction">Related to construction, renovations, or other facility related purchase</option>
           </select>
-          <div class="form-helper">Select the category that best describes what you're purchasing.</div>
+          <div class="form-helper">
+            Select the category that best describes what you're purchasing.
+          </div>
         </div>
-        <div id="fmdMessage" class="alert" style="display:none;">
-          For construction, renovations, or other facility related purchases, contact Facilities Management Department (FMD).
+        
+        <!-- FMD message will be displayed here when construction is selected -->
+        <div id="fmdMessage" class="alert alert-info" style="display: none; margin-top: 1rem;">
+          <span class="alert-icon icon-info-circle"></span>
+          <div>
+            <div class="alert-title">Construction and Facilities Related Purchases</div>
+            <div class="alert-description">
+              For construction, renovations, or other facility related purchases, please contact the Facilities Management Department (FMD). 
+              <br><br>
+              Visit their website at: <a href="https://fmd.vcu.edu/services/" target="_blank">https://fmd.vcu.edu/services/</a>
+            </div>
+          </div>
         </div>
       </div>
       <div class="card-footer">
@@ -167,27 +88,92 @@
         <button id="step1NextButton" class="button button-primary">Next</button>
       </div>
     </div>
-
-    <!-- Step 2 -->
+    <!-- Step 2: Existing Contracts -->
     <div id="step2" class="card" style="display: none;">
       <div class="card-header">
         <div class="card-title">Check for Existing Contracts</div>
+        <div class="card-description">
+          Determine if there's an existing contract or agreement that you can use.
+        </div>
       </div>
       <div class="card-content">
+        <p>
+          Before selecting a procurement method, check if there's an existing contract or agreement that covers your needs. Using an existing contract can save time and resources.
+        </p>
+        
         <div class="form-group">
-          <label class="form-label">Is there an existing contract that meets your requirements?</label>
-          <div class="form-helper">Use tools like VASCUPP, VHEPC, eVA, VITA, Pavilion, etc.</div>
-          <div class="form-group">
-            <label><input type="radio" name="existingContract" value="yes"> Yes</label><br>
-            <label><input type="radio" name="existingContract" value="no"> No</label><br>
-            <label><input type="radio" name="existingContract" value="notSure"> I'm not sure</label>
+          <label class="form-label">Check these resources for existing contracts:</label>
+          <div class="platform-buttons">
+            <a href="https://vascupp.org" target="_blank" class="platform-button vascupp-button">
+              <div class="platform-button-name">VASCUPP</div>
+              <div class="platform-button-desc">Virginia Association of State College & University Purchasing Professionals</div>
+            </a>
+            <a href="https://vhepc.cobblestone.software" target="_blank" class="platform-button vhepc-button">
+              <div class="platform-button-name">VHEPC</div>
+              <div class="platform-button-desc">Virginia Higher Education Procurement Consortium</div>
+            </a>
+            <a href="https://eva.virginia.gov" target="_blank" class="platform-button eva-button">
+              <div class="platform-button-name">eVA</div>
+              <div class="platform-button-desc">Virginia's eProcurement Portal</div>
+            </a>
+            <a href="https://vita.cobblestonesystems.com/public/" target="_blank" class="platform-button vita-button">
+              <div class="platform-button-name">VITA</div>
+              <div class="platform-button-desc">Virginia Information Technologies Agency Contracts</div>
+            </a>
+            <a href="https://www.withpavilion.com/welcome" target="_blank" class="platform-button pavilion-button">
+              <div class="platform-button-name">Pavilion</div>
+              <div class="platform-button-desc">Cooperative Purchasing Platform</div>
+            </a>
           </div>
         </div>
-        <div id="existingContractInfo" class="alert" style="display: none;">
-          Use the existing contract whenever possible to streamline procurement.
+
+        <div class="form-group">
+          <label class="form-label">Is there an existing contract that meets your requirements?</label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="existingContract" value="yes">
+              <span class="radio-checkmark"></span>
+              Yes, there is an existing contract
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="existingContract" value="no">
+              <span class="radio-checkmark"></span>
+              No, there is no existing contract
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="existingContract" value="notSure">
+              <span class="radio-checkmark"></span>
+              I'm not sure
+            </label>
+          </div>
         </div>
-        <div id="notSureInfo" class="alert" style="display: none;">
-          Contact Purchasing to confirm availability of cooperative contracts.
+
+        <div id="existingContractInfo" style="display: none;">
+          <div class="alert">
+            <span class="alert-icon icon-check-circle"></span>
+            <div>
+              <div class="alert-title">Use the Existing Contract</div>
+              <div class="alert-description">
+                When an existing contract meets your requirements, you should use it as your primary option. Contact your procurement team for assistance with the order process. You can still proceed to explore alternative options if needed.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="notSureInfo" style="display: none;">
+          <div class="alert">
+            <span class="alert-icon icon-alert-circle"></span>
+            <div>
+              <div class="alert-title">Check for Cooperative Procurement Options</div>
+              <div class="alert-description">
+                Contact University Purchasing to determine if there's an existing contract, cooperative procurement agreement, or other arrangement that meets your needs. Using these options can save significant time in the procurement process.
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-helper">
+          Note: Even if you select "Yes" or "Not Sure", you can still proceed to the next step to explore all available procurement options.
         </div>
       </div>
       <div class="card-footer">
@@ -195,49 +181,216 @@
         <button id="step2NextButton" class="button button-primary">Next</button>
       </div>
     </div>
-
-    <!-- Step 3 -->
+    <!-- Step 3: Procurement Criteria -->
     <div id="step3" class="card" style="display: none;">
       <div class="card-header">
         <div class="card-title">Procurement Criteria</div>
+        <div class="card-description">
+          Answer a few questions to determine the appropriate procurement method.
+        </div>
       </div>
       <div class="card-content">
         <div class="form-group">
-          <label class="form-label">Estimated procurement value:</label>
-          <label><input type="radio" name="value" value="under10k"> Under $10,000</label><br>
-          <label><input type="radio" name="value" value="10kTo200k"> $10,000 - $200,000</label><br>
-          <label><input type="radio" name="value" value="200kTo2m"> $200,000 - $2M</label><br>
-          <label><input type="radio" name="value" value="2mTo5m"> $2M - $5M</label><br>
-          <label><input type="radio" name="value" value="over5m"> Over $5M</label>
+          <label class="form-label">What is the estimated value of the procurement?</label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="value" value="under10k">
+              <span class="radio-checkmark"></span>
+              Under $10,000 (Delegated Authority)
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="value" value="10kTo200k">
+              <span class="radio-checkmark"></span>
+              $10,000 to $200,000 (Small Purchase)
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="value" value="200kTo2m">
+              <span class="radio-checkmark"></span>
+              $200,000 to $2 million (Formal Process)
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="value" value="2mTo5m">
+              <span class="radio-checkmark"></span>
+              $2 million to $5 million (Higher Level Signer Required)
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="value" value="over5m">
+              <span class="radio-checkmark"></span>
+              Over $5 million (BOV Approval & Higher Level Signer Required)
+            </label>
+          </div>
+          <div class="form-helper">
+            Consider the Total Contract Value (TCV) - including initial contract period, optional renewals, and potential total spend.
+          </div>
         </div>
 
         <div class="form-group">
-          <label class="form-label">Is it complex or specialized?</label>
-          <label><input type="radio" name="specialized" value="yes"> Yes</label><br>
-          <label><input type="radio" name="specialized" value="no"> No</label>
+          <label class="form-label">Are the requirements complex, specialized, or unique item/service?</label>
+          <div class="alert" style="margin-bottom: 1rem;">
+            <span class="alert-icon icon-info-circle"></span>
+            <div>
+              <div class="alert-title collapsible">What makes something "complex or specialized"?</div>
+              <div class="alert-description collapsible-content">
+                Complex or specialized purchases typically include:
+                <ul class="text-sm" style="margin-top: 0.5rem;">
+                  <li>Items requiring significant customization or configuration</li>
+                  <li>Services requiring specialized expertise, certifications, or unique qualifications</li>
+                  <li>Procurements where factors beyond price (quality, implementation approach, experience) are critical</li>
+                  <li>Solutions where technical approach or methodology significantly impacts outcomes</li>
+                </ul>
+                Standard items/services are those with clear, widely-accepted specifications that can be accurately compared primarily on price.
+              </div>
+            </div>
+          </div>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="specialized" value="yes">
+              <span class="radio-checkmark"></span>
+              Yes, it's complex, specialized, or unique
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="specialized" value="no">
+              <span class="radio-checkmark"></span>
+              No, it's a standard item/service
+            </label>
+          </div>
+          <div class="form-helper">
+            Note: This classification affects which procurement method is recommended. Complex/specialized purchases typically use methods that evaluate quality and approach, not just price.
+          </div>
         </div>
 
         <div class="form-group">
-          <label class="form-label">Is this a single source?</label>
-          <label><input type="radio" name="singleSource" value="yes"> Yes</label><br>
-          <label><input type="radio" name="singleSource" value="no"> No</label>
+          <label class="form-label">Is there a single source that can provide this item/service?</label>
+          <div class="alert" style="margin-bottom: 1rem;">
+            <span class="alert-icon icon-info-circle"></span>
+            <div>
+              <div class="alert-title collapsible">What qualifies as a "single source" procurement?</div>
+              <div class="alert-description collapsible-content">
+                A true single/sole source situation exists when:
+                <ul class="text-sm" style="margin-top: 0.5rem;">
+                  <li>Only one vendor can provide the exact item or service needed</li>
+                  <li>The item is only available from the original equipment manufacturer (OEM)</li>
+                  <li>Required compatibility with existing systems can only be met by one vendor</li>
+                  <li>Proprietary technology or unique expertise is only available from one source</li>
+                </ul>
+                <strong>Preferences for a specific vendor, prior relationships, or convenience are not valid justifications for single source procurement.</strong>
+              </div>
+            </div>
+          </div>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="singleSource" value="yes">
+              <span class="radio-checkmark"></span>
+              Yes, only one vendor can provide this
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="singleSource" value="no">
+              <span class="radio-checkmark"></span>
+              No, multiple vendors can provide this
+            </label>
+          </div>
+          <div class="form-helper">
+            Note: Single source claims require detailed written justification and market research documentation to be approved by Procurement Services.
+          </div>
         </div>
 
         <div class="form-group">
-          <label class="form-label">Is this an emergency?</label>
-          <label><input type="radio" name="emergency" value="yes"> Yes</label><br>
-          <label><input type="radio" name="emergency" value="no"> No</label>
+          <label class="form-label">Is this an emergency procurement?</label>
+          <div class="alert" style="margin-bottom: 1rem;">
+            <span class="alert-icon icon-alert-circle"></span>
+            <div>
+              <div class="alert-title collapsible">What qualifies as an emergency?</div>
+              <div class="alert-description collapsible-content">
+                An emergency is a situation that creates an immediate threat to public health, welfare, safety, or public property, such as:
+                <ul class="text-sm" style="margin-top: 0.5rem;">
+                  <li>Natural disasters or events causing immediate safety hazards</li>
+                  <li>Serious equipment failures affecting critical operations</li>
+                  <li>Situations that would result in significant financial loss to the university</li>
+                  <li>Circumstances where there is insufficient time to use normal procurement methods</li>
+                </ul>
+                <strong>Tight deadlines, poor planning, or administrative convenience do not constitute emergencies.</strong>
+              </div>
+            </div>
+          </div>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="emergency" value="yes">
+              <span class="radio-checkmark"></span>
+              Yes, it's a true emergency (as defined above)
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="emergency" value="no">
+              <span class="radio-checkmark"></span>
+              No, it's not an emergency
+            </label>
+          </div>
+          <div class="form-helper">
+            Note: Emergency procurements must be documented and justified to Procurement Services. They are subject to review and may be rejected if they don't meet emergency criteria.
+          </div>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="exception">Exception to Competition (if any):</label>
+          <label class="form-label" for="exception">Does this procurement qualify for an Exception to Competition (EC)?</label>
           <select id="exception" class="form-control">
-            <option value="none" selected>No Exception</option>
-            <option value="EC1">Game Officials</option>
-            <option value="EC2">Speakers</option>
-            <option value="EC3">TV/Radio</option>
-            <!-- More options as needed -->
+            <option value="none" selected>No Exception Applies</option>
+            <optgroup label="Arts, Events, and Media (Capped at $200k)">
+              <option value="EC2">Game Officials (Referees, umpires for athletic events)</option>
+              <option value="EC3">TV/Radio (Programs for athletic events, conferences)</option>
+              <option value="EC4">Performing Arts/Media Services (Musicians, designers, etc.)</option>
+              <option value="EC5">Arts/Exhibitions (Rental fees for exhibitions)</option>
+              <option value="EC24">Advertisements (Newspapers, magazines, radio, TV, etc.)</option>
+            </optgroup>
+            <optgroup label="Arts, Events, and Media (Unlimited)">
+              <option value="EC31">Speakers/Performing Artists</option>
+            </optgroup>
+            <optgroup label="Education and Research (Capped at $200k)">
+              <option value="EC6">Books/Subscriptions (Print or electronic)</option>
+              <option value="EC8">Registration Fees (Conference, seminar, training)</option>
+              <option value="EC9">Academic/Research Consulting</option>
+              <option value="EC18">Academic Testing</option>
+              <option value="EC19">Accreditation Fees</option>
+              <option value="EC20">Equipment Testing or Evaluation</option>
+              <option value="EC21">Training Sessions & Workshops</option>
+            </optgroup>
+            <optgroup label="Education and Research (Unlimited)">
+              <option value="EC16">Educational Institutions (Public/private, non-profit)</option>
+            </optgroup>
+            <optgroup label="Travel and Conferences">
+              <option value="EC23">International Purchases (Capped at $200k)</option>
+              <option value="EC34">Foreign Group Travel (Unlimited)</option>
+              <option value="EC35">Conference Facilities & Services (Unlimited)</option>
+              <option value="EC36">Athletic Events Participation (Unlimited)</option>
+            </optgroup>
+            <optgroup label="Equipment and Maintenance">
+              <option value="EC12">Maintenance & Repair (High-cost equipment) (Capped at $200k)</option>
+              <option value="EC28">Used Equipment (Unlimited)</option>
+            </optgroup>
+            <optgroup label="Health and Professional Services">
+              <option value="EC13">Transplants & Implants (Capped at $200k)</option>
+              <option value="EC14">Medical/Health Services (Capped at $200k)</option>
+              <option value="EC25">Facilitators/Mediators (Capped at $200k)</option>
+              <option value="EC39">Pharmacies/Medical Residencies (Capped at $200k)</option>
+              <option value="EC38">Legal Services (Unlimited)</option>
+            </optgroup>
+            <optgroup label="Technology and Utilities">
+              <option value="EC17">Specialized Software Licenses (Capped at $200k)</option>
+              <option value="EC27">Utilities (Electricity, natural gas, etc.) (Unlimited)</option>
+            </optgroup>
+            <optgroup label="Other Exceptions">
+              <option value="EC10">Sponsorships (Capped at $200k)</option>
+              <option value="EC11">Honoraria (Capped at $200k)</option>
+              <option value="EC15">Pass-Through Procurements (Capped at $200k)</option>
+              <option value="EC26">Real Estate Leases (Capped at $200k)</option>
+              <option value="EC29">Government-to-Government Purchases (Unlimited)</option>
+              <option value="EC30">Special Sector Purchases (Unlimited)</option>
+              <option value="EC32">Memberships and Association Dues (Unlimited)</option>
+              <option value="EC33">Grant Sub-Awards (Unlimited)</option>
+              <option value="EC37">Royalties (Unlimited)</option>
+            </optgroup>
           </select>
+          <div class="form-helper">
+            Select an exception if applicable. Note that some exceptions are capped at $200,000. If your TCV exceeds this cap and the exception is capped, normal procurement rules will apply.
+          </div>
         </div>
       </div>
       <div class="card-footer">
@@ -245,39 +398,3 @@
         <button id="step3NextButton" class="button button-primary">Next</button>
       </div>
     </div>
-
-    <!-- Step 4 -->
-    <div id="step4" class="card" style="display: none;">
-      <div class="card-header">
-        <div class="card-title">Suggested Procurement Method</div>
-      </div>
-      <div class="card-content">
-        <div class="alert">
-          This tool provides general guidance. Final determination will be made by Procurement Services.
-        </div>
-        <div id="resultDisplay" class="result-section"></div>
-        <!-- Procurement Process Overview removed -->
-
-        <div class="alert">
-          <strong>Need Assistance?</strong><br>
-          Submit a ticket: <a href="https://vcu-amc.ivanticloud.com/Default.aspx?Scope=ObjectWorkspace&CommandId=Search&ObjectType=ServiceReq%23#1729080190081" target="_blank">VCU Procurement Service Tickets</a><br>
-          Or email: <a href="mailto:purchasing@vcu.edu">purchasing@vcu.edu</a>
-        </div>
-      </div>
-      <div class="card-footer">
-        <button id="step4BackButton" class="button button-outline">Back</button>
-        <button id="downloadResultButton" class="button button-primary">Download Results</button>
-        <button id="resetButton" class="button button-outline">Start Over</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
-  <script>
-    const { jsPDF } = window.jspdf;
-    const vcuLogoBase64 = ''; // Add base64 logo if needed for the PDF
-  </script>
-  <script src="script.js"></script>
-</body>
-</html>
